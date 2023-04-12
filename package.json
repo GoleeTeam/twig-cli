@@ -1,0 +1,13 @@
+{
+  "name": "twig-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "twig": "^1.16.0"
+  }
+}
