@@ -5,8 +5,9 @@ const {twig} = require('twig')
 const { program } = require('commander');
 
 program
-    .requiredOption('-t <path>, --twig <path>', 'path to twig file')
-    .requiredOption('-d <path>, --data <path>', 'path to data file (JSON)')
+    .requiredOption('-t <path>', 'path to twig file')
+    .requiredOption('-d <path>', 'path to data file (JSON)')
+    .option('-o <path>', 'path to output file (JSON)')
 
 program.parse();
 
@@ -17,6 +18,9 @@ console.log(`template file: ${template}`)
 
 const data = opts['d']
 console.log(`data file: ${data}`)
+
+const output = opts['o'] || './output.html'
+console.log(`output file: ${output}`)
 
 fs.watchFile(template, (curr, prev) => {
     compile()
@@ -58,8 +62,6 @@ const compile = () => {
         return;
     }
 
-
-    const output = './output.html'
     console.log(`writing output in ${output}`)
     fs.writeFile(output, result, err => {
         if (err) {
