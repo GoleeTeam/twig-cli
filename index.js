@@ -2,12 +2,12 @@
 
 const fs = require('fs');
 const {twig} = require('twig')
-const { program } = require('commander');
+const {program} = require('commander');
 
 program
-    .requiredOption('-t <path>', 'path to twig file')
+    .requiredOption('-t <path>', 'path to twig file (TWIG)')
     .requiredOption('-d <path>', 'path to data file (JSON)')
-    .option('-o <path>', 'path to output file (JSON)')
+    .option('-o <path>', 'path to output file (HTML)')
 
 program.parse();
 
@@ -22,11 +22,11 @@ console.log(`data file: ${data}`)
 const output = opts['o'] || './output.html'
 console.log(`output file: ${output}`)
 
-fs.watchFile(template, (curr, prev) => {
+fs.watchFile(template, {persistent: true, interval: 100}, (curr, prev) => {
     compile()
 });
 
-fs.watchFile(data, (curr, prev) => {
+fs.watchFile(data, {persistent: true, interval: 100}, (curr, prev) => {
     compile()
 });
 
@@ -36,18 +36,18 @@ const compile = () => {
     console.log(`file Changed`);
 
     var templateData;
-    try{
-        templateData =  JSON.parse(fs.readFileSync(data, 'utf8'));
-    }catch (e) {
+    try {
+        templateData = JSON.parse(fs.readFileSync(data, 'utf8'));
+    } catch (e) {
         console.error(`Error reading data file`)
         return;
     }
 
     var templateBuffer;
-    try{
+    try {
         const twigTemplateAsBase64 = fs.readFileSync(template, {encoding: 'base64'});
         templateBuffer = Buffer.from(twigTemplateAsBase64, 'base64').toString('utf-8')
-    }catch (e) {
+    } catch (e) {
         console.error(`Error reading template file`)
         return;
     }
@@ -57,7 +57,7 @@ const compile = () => {
         result = twig({
             data: templateBuffer
         }).render(templateData);
-    }catch (e) {
+    } catch (e) {
         console.error(`Error compiling twig`)
         return;
     }
