@@ -3,4 +3,4 @@ node_modules
 template.twig
 output.html
 data.json
-*.html
+template.html

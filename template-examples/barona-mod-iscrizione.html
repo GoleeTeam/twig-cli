@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+      http-equiv="refresh"
+    />
+    <style>
+      footer {
+        position: fixed;
+        bottom: 40;
+        left: 80;
+        right: 0;
+        font-size: 12px;
+        color: blue;
+      }
+
+      .page {
+        width: 125vw;
+        page-break-after: always;
+        padding: 40px 60px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .logos {
+        height: 75px;
+      }
+
+      .header {
+        text-align: center;
+      }
+
+      .paragrafo {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .paragrafo-colonne {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .paragrafo-colonne > .paragrafo {
+        width: 400px;
+      }
+
+      .box-container {
+        width: 100%;
+        display: flex;
+      }
+
+      .box-firma {
+        width: 300px;
+        margin-right: 0;
+        margin-left: auto;
+      }
+
+      table {
+        border: 1px solid black;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0px;
+      }
+
+      tr {
+        border: 1px solid black;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 5px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="header">
+        <div class="logos">
+          <img
+            align="center"
+            src="{{club.logo}}"
+            alt="{{club.name}}"
+            style="height: 75px"
+          />
+        </div>
+        <p>
+          <b> BARONA SPORTING 1971 SSd aRL </b>
+        </p>
+        <p style="font-size: 12px">
+          Via San Paolino, 9 - 20142 MILANO (MI)<br />
+          Tel. 351 5580793 • P.IVA 07875320157 - Mail:
+          segreteria@baronasporting1971.it
+        </p>
+      </div>
+      <div class="paragrafo">
+        <h4 style="text-align: center">
+          Modulo iscrizione<br />
+          stagione sportiva {{season.selected}}
+        </h4>
+      </div>
+      <div class="paragrafo">
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Cognome e Nome</b> {{athlete.surname}} {{athlete.name}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Data di nascita</b> {{athlete.birthdate}}
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <b>Luogo di nascita</b> {{athlete.birthplace}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Nazionalità</b> {{athlete.nationality}}
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Indirizzo</b>
+          {{athlete.address.address}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Residente a</b> {{athlete.address.town}}
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <b>Prov.</b> {{athlete.address.province}} &emsp;&emsp;
+          <b>Cap</b> {{athlete.address.cap}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Cell. mamma</b> {{athlete.parents.0.recap.phone}}
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Cell. papà</b>
+          {{athlete.parents.1.recap.phone}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>E-mail</b> {{athlete.recaps_1.email}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Codice Fiscale</b> {{athlete.fiscal_code}}
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>SQUADRA DI PROVENIENZA</b>
+          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b
+            >Taglia</b
+          >
+          &emsp;&emsp;&emsp;<b>Altezza</b>
+        </p>
+        <p style="width: 100%; border-bottom: 1px solid black">
+          <b>Data di scadenza visita medica</b>
+          {{athlete.medical_examination.expiration_date}}
+        </p>
+        <p>
+          <b
+            >Documenti richiesti:
+            <ul>
+              <li>Documento d'identità</li>
+              <li>
+                Certificato Contestuale Anagrafico di Nascita, Residenza, Stato
+                di famiglia per USO SPORTIVO
+              </li>
+              <li>Certificato medico di idoneità all’attività sportiva</li>
+            </ul>
+            <p>
+              <u>
+                Nota Bene: segnalare qui l’eventuale presenza di allergie a cibi
+                o medicine
+              </u>
+            </p>
+          </b>
+        </p>
+      </div>
+
+      <div class="page">
+        <p>
+          <b>MODALITA DI PAGAMENTO</b>
+        </p>
+        <ul>
+          <li>Contanti</li>
+          <li>Carte di pagamento: Bancomat o Carta di credito</li>
+          <li>
+            Assegno bancario non trasferibile Intestato a Barona Sporting 1971
+            SSd Arl
+          </li>
+          <li>
+            Bonifico Bancario a: Barona Sporting 1971 SSd aRL – IBAN
+            IT02D0623001627000046811713
+          </li>
+        </ul>
+
+        <p style="background-color: yellow">
+          <em>
+            IL PAGAMENTO DEVE ESSERE EFFETTUATO
+            <b>ENTRO IL 30 OTTOBRE 2022</b> SI PUÒ RATEIZZARE IN MAX 3 RATE.
+          </em>
+        </p>
+
+        <p style="text-align: center">
+          <b> ACCORDO DI PAGAMENTO </b>
+        </p>
+
+        <p>
+          Io sottoscritto {{athlete.parents.0.name}}
+          {{athlete.parents.0.surname}} genitore / tutore {{athlete.name}}
+          {{athlete.surname}} dichiaro di aver concordato la dilazione di
+          pagamento per la quota secondo quanto segue:
+        </p>
+        <p>
+          Tot da Versare Euro ______________ Numero di Rate _______ Cadenza
+          _____________________________________
+        </p>
+
+        <table>
+          <tr>
+            <td>
+              <b> N. RATA </b>
+            </td>
+            <td>
+              <b> QUOTA VERSATA </b>
+            </td>
+            <td>
+              <b> DATA </b>
+            </td>
+            <td>
+              <b> N. RICEVUTA </b>
+            </td>
+            <td>
+              <b> MODALITA DI PAGAMENTO </b>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>SALDO</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding: 14px"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="background-color: yellow">
+              <b> UNICA SOLUZIONE </b>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <p style="font-size: 12px; line-height: 16px">
+          <em>
+            Mi impegno a rispettare i termini pattuiti con
+            <b>BARONA SPORTING 1971 SSd aRL</b> per provvedere al saldo della
+            quota di iscrizione per la stagione sportiva {{season.selected}},
+            secondo i termini pattuiti.<br />
+            Così non fosse, la società ha diritto a prendere i provvedimenti
+            dovuti.
+          </em>
+        </p>
+
+        <div class="paragrafo-colonne">
+          <div class="paragrafo">
+            <p>Firma Genitore/Tutore</p>
+            <p>________________________________</p>
+          </div>
+          <div class="paragrafo">
+            <p>Firma e Timbro Delegato</p>
+            <p>_________________________________</p>
+          </div>
+        </div>
+
+        <p style="text-align: center">
+          <b>
+            <u>
+              INDICARE I DATI DEL DICHIARANTE PER LA RICEVUTA DI PAGAMENTO AI
+              FINI DELLA DETRAZIONE FISCALE MODELLO 730 - MODELLO UNICO:
+            </u>
+          </b>
+        </p>
+
+        <div class="paragrafo">
+          <p style="width: 100%; border-bottom: 1px solid black">
+            Cognome e Nome {{athlete.parents.0.surname}}
+            {{athlete.parents.0.name}}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; C.F. {{}}
+          </p>
+          <p style="width: 100%; border-bottom: 1px solid black">
+            Indirizzo {{athlete.address.address}}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Residente a
+            {{athlete.address.town}}
+          </p>
+          <p style="width: 100%; border-bottom: 1px solid black">
+            Cap {{athlete.address.cap}}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Prov. {{}}
+          </p>
+          <p style="width: 100%; border-bottom: 1px solid black">
+            Il/La Sottoscritto/a {{athlete.parents.0.surname}}
+            {{athlete.parents.0.name}}
+          </p>
+          <p style="width: 100%; border-bottom: 1px solid black">
+            In qualità di genitore di {{athlete.surname}} {{athlete.name}}
+          </p>
+
+          <p style="font-size: 12px; line-height: 16px">
+            <b>
+              PRIVACY<br />
+              Comunicazioni ai fini di Marketing da parte nostra<br />
+            </b>
+            <em>
+              Acconsento al trattamento dei dati personali miei/di mia figlia da
+              parte di Palauno asd per le seguenti ulteriori finalità: inviare
+              materiale pubblicitario e informativo; inviare informazioni
+              commerciali riguardanti esclusivamente corsi, rinnovi ed offerte
+              inerenti al servizio appena sottoscritto con trattamento in
+              adesione alle norme contenute nella nostra Privacy Policy. Accetto
+              la comunicazione ai fini di marketing da parte di BARONA SPORTING
+              1971 Srl Asd (necessario ai fini nell’esecuzione del contratto)<br /><br />
+            </em>
+            <b>
+              Dichiaro di aver preso visione e di accettare le modalità e le
+              condizioni presenti sul modulo di iscrizione. In relazione
+              all’utilizzo dei dati personali, ai sensi della legge 675/96, il
+              sottoscritto autorizza l’uso degli stessi.
+            </b>
+          </p>
+          <p style="width: 100%; border-bottom: 1px solid black">
+            Data
+            {{today}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Firma
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

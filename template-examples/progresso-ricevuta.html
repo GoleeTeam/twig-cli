@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+      http-equiv="refresh"
+    />
+    <style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 12px;
+      }
+
+      .page {
+        width: 125vw;
+        page-break-after: always;
+        padding: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .logos {
+        height: 75px;
+      }
+
+      .paragrafo {
+        margin-top: 10px;
+      }
+
+      .paragrafo-colonne {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .paragrafo-colonne > .paragrafo {
+        width: 400px;
+      }
+
+      .box-container {
+        width: 100%;
+        display: flex;
+      }
+
+      .box-firma {
+        width: 300px;
+        margin-right: 0;
+        margin-left: auto;
+      }
+
+      p {
+        text-align: justify;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+        padding: 2px;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="header">
+        <div class="paragrafo-colonne">
+          <div class="paragrafo" style="width: 100px">
+            <img
+              align="left"
+              src="{{club.logo}}"
+              alt="{{club.name}}"
+              style="height: 75px"
+            />
+          </div>
+          <div class="paragrafo" style="width: 600px">
+            S.C.D. PROGRESSO<br />
+            Via Lirone 44<br />
+            40013 CASTEL MAGGIORE<br />
+            <em>Codice Fiscale: 0000091012650379</em><br />
+            <em>Partita IVA: 00706221207</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="paragrafo">
+        <p>
+          <b
+            ><u
+              >OGGETTO: Ricevuta Iscrizione Attività Sportiva Dilettantistica</u
+            ></b
+          >
+          del <b>{{tranche.cashed_date}}</b> N.
+          <b>{{tranche.receipt_number}}</b>
+        </p>
+        <p>
+          Prestazione sportiva dilettantistica non soggetta ad IVA per mancanza
+          dei presupposti di cui all'art. 4 D.P.R 633/1972<br />
+          Il sottoscritto <b>sig. Giacobazzi Maurizio</b>, in qualità di
+          Presidente della società
+        </p>
+      </div>
+
+      <div class="paragrafo">
+        <p style="text-align: center">
+          <b>ATTESTA</b>
+        </p>
+        <p>
+          di aver ricevuto la somma di Euro
+          <b>€ {{tranche.amount.total_amount}}</b>
+        </p>
+        <p>
+          a mezzo {{tranche.paymentMethod}} del
+          <strong>{{tranche.cashed_date}}</strong>
+        </p>
+        <p>a fronte di: <b>€ {{athlete.financial_membership_amount.tot}}</b></p>
+      </div>
+
+      <div class="paragrafo-colonne">
+        <div class="paragrafo">
+          <p>dal Sig.</p>
+          <p>residente a</p>
+          <p>in via</p>
+          <p>codice fiscale</p>
+        </div>
+        <div class="paragrafo">
+          <p>
+            <b> {{holder.surname}} {{holder.name}} </b>
+          </p>
+          <p>
+            <b>
+              {% if athlete.address.town %} {{athlete.address.town}} {% else %}
+              ......................................... {% endif %}
+            </b>
+          </p>
+          <p>
+            <b>
+              {% if athlete.address.address %} {{athlete.address.address}} {%
+              else %} ......................................... {% endif %} {%
+              if athlete.address.civic_number %}
+              {{athlete.address.civic_number}} {% else %} ....... {% endif %}
+            </b>
+          </p>
+          <p>
+            <b> {{holder.fiscal_code}} </b>
+          </p>
+        </div>
+      </div>
+      <div class="paragrafo-colonne">
+        <div class="paragrafo">
+          <p>per l'atleta</p>
+          <p>nato a</p>
+          <p>nato il</p>
+          <p>codice fiscale</p>
+        </div>
+        <div class="paragrafo">
+          <p>
+            <b> {{athlete.surname}} {{athlete.name}} </b>
+          </p>
+          <p>
+            <b>
+              {% if athlete.birthplace %} {{athlete.birthplace}} {% else %}
+              ......................................... {% endif %}
+            </b>
+          </p>
+          <p>
+            <b> {{athlete.birthdate}} </b>
+          </p>
+          <p>
+            <b> {{athlete.fiscal_code}} </b>
+          </p>
+        </div>
+      </div>
+
+      <div class="paragrafo" style="font-size: 14px">
+        <p>
+          <b> {{ notes }}</b> per l'attività sportiva dilettantistica nel
+          settore <b>CALCIO</b> <b>{{season.selected}}</b>
+        </p>
+        <p style="font-size: 12px">
+          (*) Altresì dichiara che per tale somma si ha diritto ad usufruire di
+          una detrazione d'imposta irpef pari al 19% dell'importo pagato fino ad
+          un massimo di euro 210,00 su base annua e complessivo per ciascuna
+          persona che effettua il pagamento, ai sensi dell' art. 15,co.l,let.
+          1-quinquies, D.P.R. 917/1996 e relativo Decreto di attuazione del
+          28.03.2007.
+        </p>
+        <p></p>
+        <table>
+          <tr>
+            <td style="width: 150px; font-size: 14px">
+              <b> MARCA DA BOLLO</b>
+            </td>
+            <td style="font-size: 14px">
+              Ai sensi del D.P.R. 642/1972, tabella 8 punto 7, sulle ricevute
+              emesse per quote associative e contributi da associazioni
+              politiche, sindacali e di categoria, religiose, assistenziali,
+              culturali e sportive non si applica la marca da bollo
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p style="text-align: right">
+        Timbro e Firma <br /><br />
+        {% if signature is defined %}
+        <img src="{{signature}}" style="height: 100px" align="right" />
+        {% else %} {% endif %}
+      </p>
+    </div>
+  </body>
+</html>
