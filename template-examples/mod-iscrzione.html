@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .page {
+        width: 125vw;
+        page-break-after: always;
+        padding: 30px 80px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .paragrafo {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .paragrafo-colonne {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .paragrafo-colonne > .paragrafo {
+        width: 400px;
+      }
+
+      .header {
+        text-align: center;
+      }
+
+      hr {
+        margin-top: 0px;
+      }
+
+      .section {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="header">
+        <img src="{{club.logo}}" alt="{{club.name}}" style="height: 70px" />
+        <h3>{{club.name}}</h3>
+        <p>
+          <b> SCHEDA D'ISCRIZIONE - NUOVI TESSERATI - anno 2023 </b>
+        </p>
+      </div>
+      <div class="section">
+        <p>Cognome e Nome: <b>{{athlete.surname}} {{athlete.name}}</b></p>
+        <hr />
+        <p>Società / Associazione di provenienza:</p>
+        <hr />
+        <p>
+          Nazionalità:
+          <b
+            >{% if athlete.nationality %} {{athlete.nationality}} {% else %} {%
+            endif %}</b
+          >
+        </p>
+        <hr />
+        <div class="paragrafo-colonne">
+          <div class="paragrafo">
+            <p>
+              Luogo di nascita:
+              <b
+                >{% if athlete.birthplace %} {{athlete.birthplace}} {% else %}
+                {% endif %}</b
+              >
+            </p>
+            <hr />
+          </div>
+          <div class="paragrafo">
+            <p>Data di nascita: <b>{{athlete.birthdate}}</b></p>
+            <hr />
+          </div>
+        </div>
+        <div class="paragrafo-colonne">
+          <div class="paragrafo">
+            <p>
+              Indirizzo di residenza:
+              <b
+                >{% if athlete.address.address %} {{athlete.address.address}} {%
+                else %} {% endif %} {% if athlete.address.civic_number %}
+                {{athlete.address.civic_number}} {% else %} {% endif %} {% if
+                athlete.address.town %} {{athlete.address.town}} {% else %} {%
+                endif %}</b
+              >
+            </p>
+            <hr />
+          </div>
+          <div class="paragrafo">
+            <p>
+              Provincia di residenza:
+              <b
+                >{% if athlete.address.province %} {{athlete.address.province}}
+                {% else %} {% endif %}</b
+              >
+            </p>
+            <hr />
+          </div>
+        </div>
+        <div class="paragrafo-colonne">
+          <div class="paragrafo">
+            <p>Codice fiscale: <b>{{athlete.fiscal_code}}</b></p>
+            <hr />
+          </div>
+          <div class="paragrafo">
+            <p>
+              Mail:
+              <b
+                >{% if athlete.recaps_1.email %} {{athlete.recaps_1.email}} {%
+                else %} {% endif %}</b
+              >
+            </p>
+            <hr />
+          </div>
+        </div>
+        <div class="paragrafo-colonne">
+          <div class="paragrafo">
+            <p>
+              Telefono principale:
+              <b
+                >{% if athlete.recaps_1.phone %} {{athlete.recaps_1.phone}} {%
+                else %} {% endif %}</b
+              >
+            </p>
+            <hr />
+          </div>
+          <div class="paragrafo">
+            <p>
+              Telefono genitore:
+              <b
+                >{% if athlete.parents.0.recap.phone %}
+                {{athlete.parents.0.recap.phone}} {% else %} {% endif %}</b
+              >
+            </p>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h5>ADULTO AVENTE LA RESPONSABILITÀ GENITORIALE</h5>
+        <p style="margin-top: 1px; font-size: 14px">
+          <em
+            >indicare l’adulto avente la responsabilità genitoriale a cui sarà
+            intestata la fattura per la quota corsi.</em
+          >
+        </p>
+        <p>
+          Codice Fiscale Responsabile 1:
+          <b
+            >{% if athlete.parents.0.fiscal_code %}
+            {{athlete.parents.0.fiscal_code}} {% else %}
+            _____________________________________________ {% endif %}</b
+          >
+        </p>
+        <p>
+          Cognome e Nome:
+          <b
+            >{% if athlete.parents.0.surname %} {{athlete.parents.0.surname}} {%
+            else %} ______________________ {% endif %} {% if
+            athlete.parents.0.name %} {{athlete.parents.0.name}} {% else %}
+            ______________________ {% endif %}</b
+          >
+        </p>
+        <p>
+          Codice Fiscale Responsabile 2:
+          <b
+            >{% if athlete.parents.1.fiscal_code %}
+            {{athlete.parents.1.fiscal_code}} {% else %}
+            _____________________________________________ {% endif %}</b
+          >
+        </p>
+        <p>
+          Cognome e Nome:
+          <b
+            >{% if athlete.parents.1.surname %} {{athlete.parents.1.surname}} {%
+            else %} ______________________ {% endif %} {% if
+            athlete.parents.1.name %} {{athlete.parents.1.name}} {% else %}
+            ______________________ {% endif %}</b
+          >
+        </p>
+      </div>
+      <div class="section">
+        <p style="font-size: 13px">
+          <em>
+            Il genitore e/o l’esercente la podestà genitoriale del minore o
+            l’atleta maggiorenne con la firma del presente modulo dichiara
+            volontà ad iscrivere l’atleta - ad iscriversi all'attività sportiva
+            organizzata da: {{club.name}}, come tesserato per la stagione
+            sportiva corrente, dichiarando inoltre di aver preso visione ed
+            accettare senza condizioni quanto previsto dallo statuto e dal
+            regolamento interno Società / Associazione {{club.name}} nonché,
+            parimenti, di essere a conoscenza e di accettare senza condizione
+            tutti i relativi usi e consuetudini, indicazioni programmatiche,
+            disposizioni operative ed indirizzi generali (come disposti dal
+            presidente e dal consiglio direttivo).
+          </em>
+        </p>
+      </div>
+      <div class="paragrafo-colonne">
+        <div class="paragrafo">
+          <p>Data: {{today}}</p>
+        </div>
+        <div class="paragrafo">
+          <p style="text-align: right">Firma</p>
+          {% if signature is defined %}
+          <img src="{{signature}}" style="height: 80px" align="right" /> {% else
+          %}
+          <p></p>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="page">
+      <p style="font-size: 13px">
+        <b>AUTORIZZAZIONE TRATTAMENTO DATI PERSONALI:</b>
+        L’atleta o i genitori o chi ne esercita podestà genitoriale con la
+        sottoscrizione dichiara di aver preso visione dell'informativa sulla
+        Privacy fornita; di dare il proprio consenso al trattamento dei dati
+        personali da parte dell'Associazione, ai sensi dell’art. 13 D.lgs. n.
+        196/2003 e del GDPR679/2016 per la realizzazione delle finalità
+        istituzionali dell’Associazione e nella misura necessaria
+        all'adempimento degli obblighi fiscali, sanitari, legali ed assicurativi
+        previsti dalle norme. Di dare il proprio consenso all'uso dei dati
+        personali da parte dell'Associazione, ai sensi dell’art. 13 D.lgs. n.
+        196/2003 e del GDPR 679/2016 per la realizzazione di iniziative di
+        profilazione e di comunicazione diretta (via mail, messaggistica
+        telefonica, posta ordinaria) per la realizzazione delle finalità
+        istituzionali dell’Associazione. La non accettazione del trattamento
+        dati renderà impossibile il tesseramento e la partecipazione ad ogni
+        attività organizzata da: {{club.name}} 1) Alla comunicazione dei dati
+        personali per il tesseramento presso le rispettive Federazioni o enti di
+        promozione sportiva e ad enti istituzionali (Regione, Provincia, Comune)
+        per finalità direttamente connesse con l’attività svolta; 2) Alla
+        comunicazione dei dati personali alla compagnia di assicurazione con la
+        quale vengono stipulati contratti assicurativi per la copertura di
+        rischi derivanti infortuni o responsabilità civile; alla comunicazione
+        alla stessa assicurazione, a Federazione o Enti, se previsti dalla
+        legge, di dati che potrebbero comprendere dati sensibili per aprire
+        pratiche relative ad eventuali sinistri.<br />Si autorizza la fotografia
+        e/o la ripresa del sottoscritto / del minore, effettuate ai soli fini
+        istituzionali, durante lo svolgimento delle attività e/o delle
+        manifestazioni organizzate dall'Associazione. Società / Associazione
+        {{club.name}} <b>[SI] [NO]<br /></b>Si acconsente all'uso dei dati
+        personali da parte dell'Associazione, ai sensi dell’art. 13 D.lgs. n.
+        196/2003 e del GDPR 679/2016 per la realizzazione di iniziative di
+        profilazione e di comunicazione diretta (via mail, messaggistica
+        telefonica, posta ordinaria)a fini di marketing sia diretti che di
+        partner esterni. <b>[SI] [NO]<br /></b>Si acconsente al trattamento e
+        alla pubblicazione, per i soli fini istituzionali, di video, fotografie
+        e/o immagini atte a rivelare l’identità del sottoscritto / del minore,
+        sul sito web / social network e sul periodico dell'Associazione e nelle
+        bacheche affisse nei locali della medesima.<b> [SI] [NO]</b
+        ><b><br /><br />ESONERO RESPONSABILITÀ</b>: Il sottoscritto dichiara di
+        essere a conoscenza e di accettare le condizione relative al
+        tesseramento e alla copertura assicurativa infortuni fornite dal
+        tesseramento. Pertanto esonera codesta associazione nella figura del suo
+        Presidente da qualsiasi responsabilità oggettiva o soggettiva, nel caso
+        di mancato o non esecutivo accoglimento ad eventuale liquidazione.
+        Altresì solleva la stessa Società / Associazione {{club.name}} o anche
+        agli oneri futuri, riguardanti un probabile ricorso giudiziario
+        all'autorità competente. Società / Associazione {{club.name}} è
+        espressamente esonerato da responsabilità per tutti gli eventuali danni
+        derivati da fatti imputabili in via esclusiva all'atleta (ivi comprese,
+        a titolo esemplificativo e non esaustivo, iniziative autonome e non
+        autorizzate assunte dall'atleta nel corso della permanenza presso il
+        Centro Sportivo durante la stagione sportiva), o da circostanze estranee
+        alla fornitura delle prestazioni previste, da caso fortuito, da forza
+        maggiore, ovvero da circostanze che la stessa non poteva,secondo la
+        diligenza professionale, ragionevolmente prevedere o risolvere.<b
+          ><br /><br />DOCUMENTI NECESSARI - QUOTA:</b
+        >
+        Ogni tesserato dovrà consegnare all'atto dell’iscrizione la
+        documentazione richiesta, nei tempi e modi richiesti. La mancanza di uno
+        solo dei documenti impedirà il perfezionamento dell’iscrizione e la
+        conseguente partecipazione alle attività sportiva per la stagione
+        sportiva corrente senza alcuna responsabilità per Società / Associazione
+        {{club.name}}. In caso di mancato e/o ritardato pagamento Società /
+        Associazione {{club.name}} ha la facoltà di sospendere l'atleta
+        dall'attività sportiva, senza che per questo possa richiedere qualunque
+        forma di adeguamento o riduzione della quota di iscrizione dovuta. Dal
+        momento dell’avvio ufficiale delle attività, la rinuncia non comporta la
+        restituzione della quota integralmente versata.
+      </p>
+      <div class="paragrafo-colonne">
+        <div class="paragrafo">
+          <p style="font-size: 13px">Data: {{today}}</p>
+        </div>
+        <div class="paragrafo">
+          <p style="font-size: 13px">Firma: ______________________</p>
+        </div>
+      </div>
+      <p style="font-size: 13px">
+        Ai sensi e per gli effetti dell’art. 1341 e 1342 c.c. ed ulteriori norme
+        in materia, il sottoscritto atleta o i genitori o chi ne esercita
+        podestà genitoriale dichiara espressamente di avere esaminato di
+        approvare tutti i paragrafi della presente scrittura ed in particolar
+        modo la dichiarazione di accettazione dello statuto, regolamento
+        interno, norme regolatrici,trattamento dati personali (informativa sul
+        diritto privacy), esonero responsabilità, documenti necessari e quote.
+      </p>
+
+      <div class="paragrafo-colonne">
+        <div class="paragrafo">
+          <p style="font-size: 13px">Data: {{today}}</p>
+        </div>
+        <div class="paragrafo">
+          <p style="font-size: 13px">Firma: ______________________</p>
+        </div>
+      </div>
+
+      <p style="font-size: 13px">
+        Il sottoscritto, dichiara inoltre di aver letto e approvato il codice
+        etico.
+      </p>
+
+      <div class="paragrafo-colonne">
+        <div class="paragrafo">
+          <p style="font-size: 13px">Data: {{today}}</p>
+        </div>
+        <div class="paragrafo">
+          <p style="font-size: 13px">Firma: ______________________</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

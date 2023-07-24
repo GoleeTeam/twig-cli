@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+      http-equiv="refresh"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/gle-assets/gutenberg-print.min.css"
+      media="print"
+    />
+
+    <style>
+      html {
+        font-size: 12px;
+        font-family: "Inter", sans-serif;
+      }
+
+      #description p,
+      .border-slate-100 {
+        min-height: 2em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="header">
+      {% if club.logo %}
+      <img src="{{club.logo}}" alt="{{club.name}}" style="height: 50px" />
+      {% endif %}
+      <p class="text-xl font-bold mt-4">
+        Ricevuta / Quietanza di pagamento N. {{tranche.receipt_number}}
+      </p>
+    </section>
+
+    <section id="declaration">
+      <p class="my-3">
+        <span class="font-bold">{{club.name}}</span> dichiara di aver ricevuto
+      </p>
+
+      {% if holder.metadata.isParent %}
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-2/12">Da</p>
+        <p class="basis-4/12 border p-1 border-slate-100">
+          {{holder.metadata.surname}} {{holder.metadata.name}}
+        </p>
+        <p class="basis-2/12 text-right mr-2">codice fiscale</p>
+        <p class="basis-4/12 border p-1 border-slate-100">
+          {% if holder.metadata.fiscalCode is defined %}
+          {{holder.metadata.fiscalCode}} {% endif %}
+        </p>
+      </div>
+
+      <p class="my-2">In qualità di Genitore e/o Tutore Legale</p>
+
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-1/6">di</p>
+        <p class="basis-5/6 border p-1 border-slate-100">
+          {{athlete.surname}} {{athlete.name}}
+        </p>
+      </div>
+      {% else %}
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-1/6">Da</p>
+        <p class="basis-5/6 border p-1 border-slate-100">
+          {{holder.metadata.surname}} {{holder.metadata.name}}
+        </p>
+      </div>
+      {% endif %}
+
+      <!-- birth info -->
+      {% if isExternal == false %}
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-2/12">nato a</p>
+        <p class="basis-4/12 border p-1 border-slate-100">
+          {{athlete.birthplace}}
+        </p>
+        <p class="basis-2/12 text-right mr-2">il</p>
+        <p class="basis-4/12 border p-1 border-slate-100">
+          {{athlete.birthdate}}
+        </p>
+      </div>
+      {% endif %}
+
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-1/6">codice fiscale</p>
+        <p class="basis-5/6 border p-1 border-slate-100">
+          <!-- athlete -->
+          {% if isExternal == false %} {{athlete.fiscal_code}}{% endif %}
+
+          <!-- registry -->
+          {% if isExternal == true %} {{registry.fiscal_code}} {% endif %}
+        </p>
+      </div>
+
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-2/12">indirizzo</p>
+        <p class="basis-4/12 border p-1 border-slate-100">
+          <!-- athlete -->
+          {% if isExternal == false %}
+
+          <!-- address -->
+          {% if athlete.address.address %} {{athlete.address.address}} {% endif
+          %}
+
+          <!-- civic_number -->
+          {% if athlete.address.civic_number %} {{athlete.address.civic_number}}
+          {% endif %}
+
+          <!-- town -->
+          {% if athlete.address.town %} {{athlete.address.town}} {% endif %}
+
+          <!-- End athlete -->
+          {% endif %}
+
+          <!-- registry -->
+          {% if isExternal == true %}
+
+          <!-- address -->
+          {% if registry.address.address %} {{registry.address.address}} {%
+          endif %}
+
+          <!-- civic_number -->
+          {% if registry.address.civic_number %}
+          {{registry.address.civic_number}} {% endif %}
+
+          <!-- town -->
+          {% if registry.address.town %} {{registry.address.town}} {% endif %}
+          {% endif %}
+        </p>
+        <p class="basis-2/12 text-right mr-2">CAP</p>
+        <p class="basis-4/12 border p-1 border-slate-100">
+          <!-- athlete -->
+          {% if isExternal == false %} {{athlete.address.cap}} {% endif %}
+
+          <!-- registry -->
+          {% if isExternal == true %} {{registry.address.cap}} {% endif %}
+        </p>
+      </div>
+
+      <div class="flex flex-row mb-1 items-center">
+        <p class="basis-1/6">provincia</p>
+        <p class="basis-5/6 border p-1 border-slate-100">
+          <!-- athlete -->
+          {% if isExternal == false %} {{athlete.address.province}} {% endif %}
+
+          <!-- registry -->
+          {% if isExternal == true %} {{registry.address.province}} {% endif %}
+        </p>
+      </div>
+    </section>
+
+    <section id="description">
+      <p class="my-2">per quanto sotto dettagliato</p>
+
+      <div class="flex flex-row items-center">
+        <p class="basis-3/6 p-1 border">Descrizione</p>
+        <p class="basis-2/6 p-1 border">Metodo di pagamento</p>
+        <p class="basis-1/6 p-1 border text-right">Importo</p>
+      </div>
+
+      <!-- tranches -->
+      {% for tranche in tranches %}
+      <div class="flex flex-row items-center">
+        <p class="basis-3/6 p-1 border">{{ tranche.reason }}</p>
+        <p class="basis-2/6 p-1 border">{{ tranche.paymentMethod }}</p>
+        <p class="basis-1/6 p-1 border font-bold text-right">
+          {{tranche.formattedAmount}}
+        </p>
+      </div>
+      {% endfor %}
+
+      <!-- total amount -->
+      {% if formattedTotalAmount %}
+      <div class="flex flex-row items-center mt-2">
+        <p class="basis-3/6 p-1"></p>
+        <p class="basis-2/6 p-1 text-right">Totale:</p>
+        <p class="basis-1/6 p-1 font-bold text-right">
+          {{formattedTotalAmount}}
+        </p>
+      </div>
+      {% endif %}
+
+      <div class="flex flex-row items-start mt-5">
+        <p class="basis-1/6">Note</p>
+        <p
+          class="basis-5/6 border p-1 border-slate-100"
+          style="min-height: 3em"
+        >
+          {{ notes }}
+        </p>
+      </div>
+    </section>
+
+    <section id="terms" class="text-xs my-8">
+      <ol class="list-decimal pl-5">
+        <li>
+          La quota versata in conformità alle finalità istituzionali
+          dell'associazione ex art. 148 co. 1 DPR 917/1986.
+        </li>
+        <li>Escluso da IVA ex art. 5, comma 4, DPR n. 633 del 26/10/1972.</li>
+      </ol>
+    </section>
+
+    <section id="signature">
+      <div class="flex flex-row items-center justify-between">
+        <p>{{club.town}}, {{tranche.cashed_date}}</p>
+        <div>Firma</div>
+      </div>
+      <div class="flex items-center justify-end">
+        {% if signature is defined %}
+        <img style="height: 90px" src="{{ signature }}" />
+        {% endif %}
+      </div>
+    </section>
+
+    <section id="footer" class="border-t-2 text-center py-5 mt-5">
+      <p class="font-bold">{{club.name}}</p>
+      <p>
+        {{club.address}} - {{club.cap}} {{club.town}} | CF / P.IVA
+        {{club.cfIva}}
+      </p>
+      <p>Tel: {{club.tel1}} - email {{club.email1}}</p>
+    </section>
+  </body>
+</html>

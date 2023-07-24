@@ -77,8 +77,10 @@
     <!-- Club logo and name in the center -->
     <section>
       <div class="flex flex-col gap-5 items-center">
-                <img src="https://lh3.googleusercontent.com/iPz3V7y_8NfswS2aKJMb_4rZl_ofZov3WM7OijI2rf6wETXFn0kxW4VvMc_vu1RgYnX2TkNiDWUMdbfk_hjyvz47tJ4Ql5L16FPM" alt="Academy Noventa Padovana ssd arl" class="h-20 w-auto" />
-                <h1 class="text-2xl font-bold">Academy Noventa Padovana ssd arl</h1>
+        {% if club.logo %}
+        <img src="{{club.logo}}" alt="{{club.name}}" class="h-20 w-auto" />
+        {% endif %}
+        <h1 class="text-2xl font-bold">{{club.name}}</h1>
       </div>
     </section>
 
@@ -88,8 +90,10 @@
     <!-- Club logo and name on the left -->
     <section>
       <div class="flex justify-start items-center gap-5">
-                <img src="https://lh3.googleusercontent.com/iPz3V7y_8NfswS2aKJMb_4rZl_ofZov3WM7OijI2rf6wETXFn0kxW4VvMc_vu1RgYnX2TkNiDWUMdbfk_hjyvz47tJ4Ql5L16FPM" alt="Academy Noventa Padovana ssd arl" class="h-16" />
-                <h1 class="text-2xl font-bold">Academy Noventa Padovana ssd arl</h1>
+        {% if club.logo %}
+        <img src="{{club.logo}}" alt="{{club.name}}" class="h-16" />
+        {% endif %}
+        <h1 class="text-2xl font-bold">{{club.name}}</h1>
       </div>
     </section>
 
@@ -99,8 +103,10 @@
     <!-- Club logo and name on the right -->
     <section>
       <div class="flex justify-start items-center gap-5 flex-row-reverse">
-                <img src="https://lh3.googleusercontent.com/iPz3V7y_8NfswS2aKJMb_4rZl_ofZov3WM7OijI2rf6wETXFn0kxW4VvMc_vu1RgYnX2TkNiDWUMdbfk_hjyvz47tJ4Ql5L16FPM" alt="Academy Noventa Padovana ssd arl" class="h-16" />
-                <h1 class="text-2xl font-bold">Academy Noventa Padovana ssd arl</h1>
+        {% if club.logo %}
+        <img src="{{club.logo}}" alt="{{club.name}}" class="h-16" />
+        {% endif %}
+        <h1 class="text-2xl font-bold">{{club.name}}</h1>
       </div>
     </section>
 
@@ -225,8 +231,12 @@
     <!-- Signature on the left -->
     <section class="flex flex-col items-start">
       <p>Signature on the left</p>
-            <img style="height: 90px" src="https://lh3.googleusercontent.com/V3Mhl86s3_d7qmfgtK8rhy0Uhdk3BWb1G2pJgh3sx4a5s5Pap7NX3EMdpcCa-BWRl7ydv7MO7P-YNUH-yHAbtoqNEAXIkwBZTAk" />
-          </section>
+      {% if signature is defined %}
+      <img style="height: 90px" src="{{ signature }}" />
+      {% else %}
+      <div class="border-t border-gray-400 w-[150px] mt-12"></div>
+      {% endif %}
+    </section>
 
     <!-- Just a divider to render components, you can ignore this-->
     <div class="my-10 border-t border-gray-100"></div>
@@ -234,8 +244,12 @@
     <!-- Signature on the right -->
     <section class="flex flex-col items-end">
       <p>Signature on the right</p>
-            <img style="height: 90px" src="https://lh3.googleusercontent.com/V3Mhl86s3_d7qmfgtK8rhy0Uhdk3BWb1G2pJgh3sx4a5s5Pap7NX3EMdpcCa-BWRl7ydv7MO7P-YNUH-yHAbtoqNEAXIkwBZTAk" />
-          </section>
+      {% if signature is defined %}
+      <img style="height: 90px" src="{{ signature }}" />
+      {% else %}
+      <div class="border-t border-gray-400 w-[150px] mt-12"></div>
+      {% endif %}
+    </section>
 
     <!-- Just a divider to render components, you can ignore this-->
     <div class="my-10 border-t border-gray-100"></div>
@@ -261,12 +275,16 @@
     <!-- Town and date on the left , signature on the right -->
     <section>
       <div class="flex flex-row items-center justify-between">
-        <p>Milano, 23/10/2022</p>
+        <p>{{club.town}}, {{today}}</p>
         <div>Signature on the right</div>
       </div>
       <div class="flex items-center justify-end mt-2">
-                <img style="height: 90px" src="https://lh3.googleusercontent.com/V3Mhl86s3_d7qmfgtK8rhy0Uhdk3BWb1G2pJgh3sx4a5s5Pap7NX3EMdpcCa-BWRl7ydv7MO7P-YNUH-yHAbtoqNEAXIkwBZTAk" />
-              </div>
+        {% if signature is defined %}
+        <img style="height: 90px" src="{{ signature }}" />
+        {% else %}
+        <div class="border-t border-gray-400 w-[150px] mt-10"></div>
+        {% endif %}
+      </div>
     </section>
 
     <!-- Just a divider to render components, you can ignore this-->
@@ -274,12 +292,16 @@
 
     <!-- Page footer with club details, centered version -->
     <footer class="flex flex-col items-center gap-1">
-      <p class="font-bold">Academy Noventa Padovana ssd arl</p>
+      <p class="font-bold">{{club.name}}</p>
       <p>
-        Via Malonetto, 67  Milano         (MI)      </p>
-      <p>Tel: 3333333333 | Email: email1@yopmail.com</p>
+        {{club.address}} {{club.cap}} {{club.town}} {% if club.province %}
+        ({{club.province}}){% endif %}
+      </p>
+      <p>Tel: {{club.tel1}} | Email: {{club.email1}}</p>
 
-            <p>Sito web: info@golee.it</p>
-          </footer>
+      {% if club.linkWeb %}
+      <p>Sito web: {{club.linkWeb}}</p>
+      {% endif %}
+    </footer>
   </body>
 </html>

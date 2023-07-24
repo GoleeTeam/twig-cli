@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+      http-equiv="refresh"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/gle-assets/gutenberg-print.min.css"
+      media="print"
+    />
+
+    <style>
+      /* @media print {
+        @page {
+          size: A4;
+          margin-block: 25mm;
+        }
+      }
+      @page {
+        size: A4;
+        margin-block: 25mm;
+      } */
+      html {
+        font-size: 12px;
+        font-family: "Inter", sans-serif;
+      }
+
+      footer {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .page {
+        /* page-break-after: always;
+        padding-inline: 30px; */
+      }
+
+      .header {
+        text-align: center;
+      }
+      .firma {
+        text-align: right;
+      }
+
+      body {
+        padding-bottom: 2cm !important;
+        padding-left: 1cm !important;
+        padding-right: 1cm !important;
+        padding-top: 2cm !important;
+      }
+    </style>
+  </head>
+
+  <body class="content">
+    <div id="first-page" class="page">
+      <section id="header">
+        {% if club.logo %}
+        <div style="display: flex; justify-content: center">
+          <img src="{{club.logo}}" alt="{{club.name}}" style="height: 80px" />
+        </div>
+        {% endif %}
+      </section>
+
+      <section class="mt-24">
+        <div class="text-center">
+          <p class="text-5xl">
+            SCRITTURA DI COLLABORAZIONE DILETTANTISTICA SPORTIVA
+          </p>
+          <p class="text-2xl mt-20">Anno sportivo 2022 - 2023</p>
+          <p class="text-2xl mt-14 font-bold">Tra</p>
+          <p class="text-2xl mt-14 font-bold">{{club.name}}</p>
+          <p class="text-2xl mt-14 font-bold">e</p>
+          <p class="text-2xl mt-14 font-bold">
+            Sig. {{athlete.surname}} {{athlete.name}}
+          </p>
+          <p class="mt-40 text-sm">
+            Ai sensi e per gli effetti del disposto normativo legge n. 133 del
+            13 maggio 1999 e successive modifiche e circolare esplicativa del
+            Coni n. 170109 del 21 luglio 2009
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div id="second-page" class="page">
+      <p class="text-3xl underline font-bold text-center">LETTERA D'INCARICO</p>
+      <p class="mt-9">
+        Con la presente privata scrittura tra l’associazione sportiva
+        dilettantistica {{club.name}} con sede legale in Crispiano in Via
+        Benedetto Croce nr. 14 rappresentata dal Presidente Pro - tempore Pino
+        Cosimo nato a Crispiano il 01/09/1958 ed in seguito indicato come asd e
+        il/la Sig.e/a {{orgPerson.surname}} {{orgPerson.name}} nato/a a {{
+        orgPerson.personMetadata.birthplace}} il {{
+        orgPerson.personMetadata.birthdate}} e residente in {{
+        orgPerson.personMetadata.address.address}}, {{
+        orgPerson.personMetadata.address.civic_number}} {{
+        orgPerson.personMetadata.address.cap}} {{
+        orgPerson.personMetadata.address.town}} codice fiscale {{
+        orgPerson.fiscalCode}} qualificatosi istruttore tecnico e allenatore
+        sportivo dilettantistico - in seguito indicato come “tecnico”
+      </p>
+      <p class="text-center mt-9">PREMESSO</p>
+      <p class="mt-9">
+        che l’ A.s.d. Ragazzi Sprint Crispiano - Ente Associativo
+        Dilettantistico affiliato alla FIGC regolarmente iscritta al registro
+        nazionale pubblico del C.O.N.I., norma prevista dal decreto legge n. 136
+        del 28 maggio 2004 convertito nella legge n.186 del 27 luglio 2004 e
+        delibera del Coni n. 1394 del 19.06.2009 e successive modifiche ed in
+        rispetto alle direttive dei competenti organi federali (FSN), delle
+        discipline associate (DSA) e degli enti di promozione sportiva nazionali
+        (EPS), svolge attività sportiva dilettantistica senza scopi di lucro e
+        senza essere soggetta alle disposizioni di cui alle legge 23.03.81 n. 91
+        ( ovvero attività non professionistica ) ;
+      </p>
+      <p class="mt-9">
+        che il/la sig. {{orgPerson.surname}} {{orgPerson.name}} si è reso
+        volontariamente disponibile nella qualità di allenatore
+        sportivodilettante a collaborare all’attività sportiva dilettantistica
+        dell’ente senza vincolo di subordinazione o professionale o di
+        qualsivoglia altro rapporto , con la medesima associazione sportiva
+        dilettantistica ai sensi del disposto normativo n. 14 del 27 febbraio
+        2009 art. 35 comma 5 che dispone che per l’esercizio diretto di attività
+        sportiva dilettantistica è ricompresa la formazione, la didattica, la
+        preparazione e l’assistenza all’attività sportiva;
+      </p>
+      <p class="mt-9">
+        Che le parti intendono disciplinare il presente accordo sulla base di
+        quanto previsto dal combinato disposto degli artt. 25 L.133/99, così
+        come modificato dall’art.37 legge 21.11.2000 n. 342 , legge n. 289 del
+        27 dicembre 2002 e art.67 lettera m del DPR N. 917/86; e legge n.14 del
+        27 febbraio 2009 art. 35 in G.U. n. 49 del 2009; e che l’attività del
+        presente contratto è da considerarsi svolta nell’esercizio diretto di
+        una attività sportiva a carattere dilettantistico per espressa
+        dichiarazione di volontà delle parti e per la ricorrenza dei presupposti
+        soggettivi, essendo l’associazione affiliata ad una Federazione e/o
+        Disciplina associata e/o Ente di promozione ed iscritta nel registro
+        CONI, ed oggettivo per l’attività sportiva dilettantistica che
+        concretizza l’incarico così come da normativa di settore.
+      </p>
+      <p class="mt-9 text-center">TANTO EVIDENZIATO</p>
+      <p class="mt-9">
+        Le premesse costituiscono parte integrante e sostanziale del presente
+        accordo e forma con essa pattuizione espressa; Si conviene quanto segue:
+      </p>
+      <p class="mt-5">
+        <strong>Art. 1</strong> - il tecnico quanto tecnico e istruttore
+        sportivo dilettantistico non professionista tessera n. dichiara dinon
+        essere soggetto alle disposizioni della legge 23.03.81 n. 91 e di
+        svolgere l’attività di tecnico - allenatore - istruttore - sportivo
+        dilettante senza i caratteri della continuità, abitualità,
+        sistematicità, e che l’ attività si estrinseca a titolo volontario e
+        libero e si esplica con i canoni dello sport dilettantistico ai sensi
+        dell’art. 67 comma 1 lett. m del TUIR n. 917 del 22 dicembre 1986 e che
+        la prestazione si svolgerà con autonomia tecnica nell’ambito dei
+        programmi che verranno concordati con l’A.S.D.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 2 </strong>- Il tecnico si impegna a prestare in modo
+        volontario , senza qualsivoglia vincolo di subordinazione o
+        professionale, la propria attività a favore dell’associazione indicata
+        in premessa per l’anno sportivo in corso condividendone lo spirito
+        sportivo dilettantistico, ricreativo, culturale, sociale, educativo,
+        previsto dallo statuto sociale che accetta, condividendone gli scopi
+        istituzionali e specificamente per le discipline sportive riconosciute
+        dal’ ordinamento sportivo . La collaborazione potrà essere interrotta
+        volontariamente in qualsiasi momento da entrambe le parti, anche
+        immotivatamente, con preavviso di sette giorni, senza qualsivoglia
+        pretesa o richiesta di danni. Il tecnico svolgerà la sua collaborazione
+        senza vincolo di orario e non è soggetto all’obbligo di giustificare le
+        proprie assenze. Nell’esclusivo fine di garantire il rispetto degli
+        impegni assunti nei confronti dell’asd, sarà cura dell’istruttore
+        provvedere direttamente a reperire persona idonea che possa sostituirlo
+        in caso di temporanea impossibilità. In questa fattispecie nessun
+        rapporto contrattuale si istaurerà con tale soggetto in conformità
+        dell’art. 2232 del codice civile ed eventuali rapporti di natura
+        economica di qualsiasi genere dovranno essere regolati tra l’istruttore
+        nei confronti del suo sostituto. L’associazione si riserva la
+        possibilità di non accettare il sostituto con giusto motivo; inoltre
+        l’istruttore si impegna a dare comunicazione all’asd della sostituzione
+        con un preavviso non inferiore alle 24 ore prima dell’evento in
+        questione.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 3 </strong>- Il tecnico sportivo dilettantistico si impegna
+        a prestare la propria opera, senza la creazione di qualsivoglia rapporto
+        di lavoro o di collaborazione, ma solo di impegno dilettantistico
+        volontario , di formazione, didattica, preparazione, assistenza a favore
+        dell’ associazione sportiva dilettantistica cosi come disposto dalla
+        legge n. 14 del 27 febbraio 2009 e come dispongono le vigenti normative
+        per lo sport dilettantistico- Il tecnico svolgerà la collaborazione
+        senza vincolo di orario se non quello derivante dal rispetto degli
+        impegni assunti e non è soggetto all’obbligo di giustificare le proprie
+        assenze. L’istruttore non è soggetto ad alcun vincolo gerarchico e/o di
+        subordinazione nei confronti dell’asd ,fatte salve le norme
+        regolamentatrici dell’ordinamento sportivo. L’istruttore comunicherà la
+        propria disponibilità dei giorni e degli orari e l’asd acquisita in
+        questo modo la disponibilità temporale dell’istruttore, si impegna a
+        determinare l’orario dell’attività sportiva dilettantistica nell’ambito
+        di tali indicazioni.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 4 </strong>- In considerazione dei disagi che il tecnico
+        sopporterà l’associazione si impegna a corrispondergli un rimborso
+        forfettario di spese o indennità di trasferta, o rimborso a piè di
+        lista, per l’intera stagione sportiva con le modalità, le previsioni e
+        le prescrizioni previste dalla ex legge 80/86 sostituita dall’art. 25
+        comma 4 della legge 13 maggio 1999 n. 133 ed integrate dalla legge 342
+        del 21 novembre 2000, e art. 90 legge n. 289 del 27 dicembre 2002 e
+        dalla legge n. 205 del 27 dicembre 2017 art.1 comma 367 modificata dal
+        D.L. n 87/2017 convertito nella legge n. 96 del 9 agosto 2018. . Tali
+        somme saranno erogate nelle previsioni e si configurano cosi come
+        disposto dall’art. 67 comma 1 lettera m e art. 69 comma 2 del Tuir n.
+        917 del 22.12.1986 e delle successive modifiche di cui alla legge N.
+        80/2005 e al DM del 24 maggio 2005 e al D.M. del 24 maggio 2005. Il
+        corrispettivo è comprensivo ed assorbe ogni emolumento che l’istruttore
+        possa richiedere in relazione all’attività svolta.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 5 </strong>- I rimborsi spese o i rimborsi a piè di lista o
+        le indennità di trasferta, verranno effettuati dall’ente dopo apposita
+        dichiarazione del tecnico firmata di proprio pugno nei modi e nei
+        termini previsti dall’art.2 del decreto 473 del 26.11.1999e successive
+        modifiche; Tali rimborsi sono determinati con riguardo alla natura ed
+        alle caratteristiche che il tecnico è istruttore sportivo dilettante.Il
+        tecnico prende atto che superata la soglia dell’area non imponibile cosi
+        come per legge , per sua esplicita dichiarazione, esonerando l’asd da
+        qualsivoglia responsabilità in merito, l’associazione provvederà alle
+        ritenute di legge cosi come disposto dalle vigenti norme tributarie.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 6 </strong>- Le parti dichiarano di stipulare il presente
+        accordo, chiedendo i benefici e le disposizioni della legge n. 133 del
+        13 maggio 1999 art .25 , Decreto n. 473 del 26.11.1999, e legge n. 342
+        del 21 novembre 2000, dalla legge n. 205 del 27 dicembre 2017 art.1
+        comma 367 modificata dal D.L. n. 87/2017 convertito nella legge n. 96
+        del 9 agosto 2018, che integrano e modificano il TUIR e nello specifico
+        l’art. 67 comma 1 lettera m ( redditi diversi) modificato dalla legge n.
+        14 del 27 febbraio 2009, nonché della circolare dell’Istituto nazionale
+        previdenza sociale (INPS) n. 42 del 26.02.2003 dell’ente nazionale di
+        previdenza e di assistenza per i lavoratori dello spettacolo (ENPALS) n
+        13 del 7 agosto 2006, e della circolare dell’istituto nazionale delle
+        assicurazioni (INAIL) n. 22 del 18 marzo 2004, nonché dell’art. 5 comma
+        2 del DPR n. 633 del 26.10.1972; cosi come indicato nella circolare del
+        Coni del 21 luglio 2009 prot. 1791/09 ed circolare dell’Ispettorato del
+        lavoro prot. 1/2016.Norme che escludono la contribuzione l’assicurazione
+        INAIL e la tassazione. Il tecnico prende atto, accettando, che
+        l’associazione non si assume alcun obbligo di indennità di preavviso o
+        di anzianità, né assume alcun obbligo riguardante malattie né stipulare
+        polizze assicurative per incidenti o infortuni in suo favore tranne
+        quelle previste dall’art. 51 della legge 289/2002 e del decreto del 16
+        aprile 2008 pubblicato in Gazzetta Ufficiale il 01.07.2008 ovvero
+        attraverso il tesseramento; facendo capo al tecnico sportivo tutti gli
+        oneri in merito, nonché la responsabilità riguardante eventuali
+        incidenti o infortuni che dovessero interessare lo stesso durante il
+        periodo effettivo disvolgimento delle suindicate prestazioni. Altresì il
+        tecnico sportivo, non potrà vantare alcuna pretesa nei confronti
+        dell’associazione nel caso in cui non saranno prestate le attività
+        richieste, le attività saranno sospese per qualsivoglia motivazione
+        anche nel caso che questo derivi nocumento morale e materiale al
+        tecnico.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 7 </strong>- Il tecnico si impegna alla puntuale osservanza
+        delle norme di regolamento interno, dello statuto,dei deliberati del
+        consiglio direttivo, delle norme federali e del presente accordo, nonché
+        delle disposizioni impartite dal direttore tecnico e del medico sociale
+        in merito alle loro specifiche competenze.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 8 </strong>- Il tecnico si impegna alla dovuta riservatezza
+        circa i metodi nello svolgimento dell’incarico affidatogli e a non far
+        uso, in alcun modo durante il periodo in cui si svolgerà la propria
+        attività, delle tecniche utilizzate nei confronti degli atleti dell’asd
+        in favore di altri soggetti non autorizzati dalla contraente nonché a
+        rispettare scrupolosamente il regolamento antidoping federale. Il
+        tecnico si impegna a non svolgere eccezioni ed eventuali riprese
+        televisive, interviste radiotelevisive, manifestazioni e si impegna ad
+        indossare l’eventuale materiale sportivo che gli venisse fornito
+        dall’asd anche con messaggi promozionali e pubblicitari senza nessuna
+        pretesa autorizzando l’asd all’uso delle immagini per i soli fini
+        istituzionali.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 9 </strong>- Il presente accordo di collaborazione sportiva
+        dilettantistico, decorrerà dalla data di stipula e terminerà con l’anno
+        sportivo, ed è espressamente escluso il tacito rinnovo. Ogni ulteriore
+        accordo concernente l’eventuale prolungamento del presente rapporto
+        oltre il termine di scadenza dovrà risultare da atto sottoscritto dalle
+        parti e avrà comunque valore di novazione dell’accordo.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 10 </strong>- Le parti dichiarano di avere integralmente
+        regolato il loro rapporto con la sottoscrizione del presente accordo,
+        conseguentemente il tecnico dichiara di nulla avere a pretendere ad
+        alcun titolo e/o ragione dalla Associazione sportiva per l’attività
+        sportiva dilettantistica di tecnico prevista dal presente accordo. Per
+        quanto non espressamente previsto, le parti si richiamano ai regolamenti
+        sportivi in materia ivi compreso il regolamento dell’associazione e lo
+        statuto nonché prendono atto ed accettano l’ordinamento sportivo
+        compresa la norma compromissoria.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 11 </strong>- Il tecnico si impegna a dare le dovute
+        comunicazioni previste dall’art. 90 delle legge finanziaria n. 289 del
+        27 dicembre 2002 comma 23 nel caso di pubblico dipendente.
+      </p>
+      <p class="mt-5">
+        <strong>Art. 12 </strong>- Il tecnico dichiara di non avere condanne o
+        irrogazioni di sanzioni interdittive all’esercizio di attività che
+        comportino contatti diretti e regolari con minori ed in preciso quanto
+        previsto dalle norme di settore ovvero art. 600 -bis , 600-ter,
+        600-quater, 600-quater uno, 600-quinquies e 609 udecies del codice
+        penale.
+      </p>
+      <p class="mt-9">
+        Le parti attribuiscono alla sottoscrizione del presente contratto il
+        valore di attestazione di consenso per il trattamento e lacomunicazione
+        dei dati personali secondo quanto previsto dal DLLGS.196/03 e
+        regolamento UE n. 2016/679 relativa alla tutela delle persone e di altri
+        soggetti rispetto al trattamento dei dati personali e successive
+        integrazioni e modificazioni. Dichiara altresì di aver ricevuto copia
+        del presente atto, e di averne accettato incondizionatamente e
+        liberamente le disposizioni in esso contenute, essendo esso stato
+        formulato e redatto con lo spirito dei valori sociali ed etici presenti
+        nello sport , nella carta costituzionale, nella costituzione europea,
+        nel libro Bianco dell’U.E.
+      </p>
+      <p class="mt-9">Addì {{today}}</p>
+      <div class="flex justify-between">
+        <div>
+          <p class="mt-12">____________________________________</p>
+          <p class="mt-2">Il Tecnico e/o Istruttore</p>
+        </div>
+        <div>
+          <p class="mt-12">____________________________________</p>
+          <p class="mt-2">Per l'associazione</p>
+        </div>
+      </div>
+      <p class="mt-12">
+        Le parti dichiarano che le clausole sotto riportate sono state oggetto
+        di specifica trattativa individuale ed ai sensi per gli effetti di cui
+        all’art. 1341 e seguenti del Codice Civile di approvarle
+        specificatamente. PER ESPRESSA APPROVAZIONE DEGLI ART.1 - 2- 3 - 4 - 5 -
+        6 - 7 - 8 - 9 - 10 - 11 - 12 e della premessa <br />LE PARTI:
+      </p>
+      <div class="flex justify-between">
+        <div>
+          <p class="mt-12">____________________________________</p>
+          <p class="mt-2">Il Tecnico e/o Istruttore</p>
+        </div>
+        <div>
+          <p class="mt-12">____________________________________</p>
+          <p class="mt-2">Per l'associazione</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="third-page" class="page">
+      <p class="text-2xl text-center font-bold">
+        LETTERA DI INCARICO PER PRESTAZIONI SPORTIVE DILETTANTISTICHE
+      </p>
+      <p class="mt-10">
+        A.S.D. Ragazzi Sprint Crispiano Via Benedetto Croce 14 <br />
+        74012 Crispiano (TA)<br />
+        Cell.: 360375568<br />
+        Email sgs :asdragazzisprint.sgs@gmail.com Email:
+        acragazzisprint@libero.it<br />
+        Iscritta al registro Coni<br />
+        Affiliata alla FIGC codice 940759
+      </p>
+      <div class="mt-7">
+        <p>Egregio Sig. e/a {{orgPerson.surname}} {{orgPerson.name}}</p>
+        <p>
+          {{orgPerson.personMetadata.address.address}} N.
+          {{orgPerson.personMetadata.address.num}}
+        </p>
+      </div>
+      <p class="mt-9 font-semibold">
+        Oggetto: Incarico per prestazione diretta di attività sportiva
+        dilettantistica ai sensi dell'art. 37 della L.342/2000 e succ. mod. e
+        int.
+      </p>
+      <p class="mt-9 font-semibold">
+        Facendo seguito alle intese preliminarmente intercorse, con la presente
+        Le comunichiamo la nostra proposta di incarico per le prestazioni in
+        oggetto in qualità di Istruttore alle seguenti condizioni:
+      </p>
+
+      <ol class="list-decimal mt-5 ml-9">
+        <li>
+          <strong>Oggetto e luogo della prestazione:</strong> l'incarico, svolto
+          a favore della scrivente Associazione,consisterà nello svolgimento di
+          istruttore sportivo presso la sede di :
+          <ul class="list-disc mt-5 ml-9">
+            <li class="font-semibold">
+              <div class="flex gap-2 align-baseline">
+                <div class="border-2 w-5 h-5"></div>
+                <p>Campo Comunale di Crispiano</p>
+              </div>
+            </li>
+            <li class="font-semibold">
+              <div class="flex gap-2 align-baseline">
+                <div class="border-2 w-5 h-5"></div>
+                <p>Centro Sportivo Belmonte</p>
+              </div>
+            </li>
+            <li class="font-semibold">
+              <div class="flex gap-2 align-baseline">
+                <div class="border-2 w-5 h-5"></div>
+                <p>Centro sportivo Vivere solidale</p>
+              </div>
+            </li>
+          </ul>
+          <p class="font-semibold mt-5">
+            L'attività sarà esercitata da Lei direttamente, senza vincolo di
+            subordinazione e con ampia autonomia.
+          </p>
+        </li>
+        <li class="mt-9">
+          <strong>Durata della prestazione:</strong> l'incarico avrà decorrenza
+          dal 01 settembre 2022 e scadenza il 30 luglio 2023 , con eventuale
+          rinnovo .
+        </li>
+        <li class="mt-9">
+          <strong>Corrispettivo:</strong> per il suddetto incarico Le sarà
+          corrisposto un compenso lordo complessivo e forfettario di Euro
+          ________________ (_______________________euro) . Le Sue competenze, al
+          netto delle ritenute, Le saranno riconosciute con periodicità mensile.
+        </li>
+        <li class="mt-9">
+          <strong>Ritenute fiscali:</strong> il compenso concordato verrà
+          assoggettato fiscalmente alla disciplina dell'art. 69 comma 2 del
+          T.U.I.R. e le eventuali ritenute fiscali, ove dovute, saranno
+          trattenute dallo scrivente ente sportivo dilettantistico e versate nei
+          modi previsti dalla Legge. Considerando che la norma esime
+          dall'imposizione i primi 10.000,00 Euro di reddito per indennità di
+          trasferta / rimborsi forfettari di spesa / premi / compensi sportivi,
+          preventivamente ad ogni richiesta di pagamento ci dovrà pervenire
+          l’autocertificazione obbligatoria dei compensi per attività sportiva
+          ricevuti da altri enti o società sportive ai sensi dell’art. 25
+          L.133/1999 e del relativo D.M. 473/1999 e successive modifiche,
+          attestante il superamento o meno, da parte Sua, di tale franchigia. In
+          assenza della suddetta autocertificazione non si procederà al
+          pagamento delle somme.
+        </li>
+        <li class="mt-9">
+          <strong>Rimborso spese a piè di lista:</strong> le spese autorizzate
+          di viaggio, vitto, alloggio, trasporti sostenute aldi fuori del Suo
+          Comune di residenza, in ragione del presente accordo, sono
+          rimborsabili a piè dilista su compilazione di nota spese
+          riepilogativa.
+        </li>
+        <li class="mt-9">
+          <strong>Risoluzione della collaborazione dilettantistica:</strong>
+          il rapporto potrà essere risolto da ambo le parti, in qualsiasi
+          momento, previo preavviso di almeno sessanta giorni.
+        </li>
+      </ol>
+      <p class="mt-9">
+        Con la sottoscrizione della presente, inoltre, Lei dichiara che la
+        suddetta attività non costituisce oggetto della sua attività
+        professionale abituale, che non ricorrono condizioni di incompatibilità
+        secondo le norme di settore e che il compenso previsto a suo beneficio
+        dalla presente lettera di incarico non costituisce né l'unica, né la
+        prevalente fonte di reddito per la sua persona nell'anno di riferimento.
+        Dichiara infine il sottoscritto di non aver condanne e/o procedimenti
+        giudiziari che inficiano tale collaborazione ai sensi delle norme di
+        settore.
+      </p>
+      <p class="mt-9 font-semibold">
+        Nel caso in cui Lei concordasse con quanto sopra esposto, La preghiamo
+        di restituirci copia della presente da Lei firmata per accettazione. Con
+        l’occasione porgiamo i nostri più cordiali saluti.
+      </p>
+
+      <p class="mt-9">Crispiano il {{today}}</p>
+      <div class="flex justify-between">
+        <div>
+          <p class="mb-2">Il presidente</p>
+          <p>
+            {% if signature is defined %}
+            <img src="{{signature}}" style="height: 100px" />
+            {% else %}
+            <br />_____________________________________ {% endif %}
+          </p>
+        </div>
+        <div>
+          <p class="mb-28">Per conferma ed accettazione, il Collaboratore</p>
+          <p>_____________________________________</p>
+        </div>
+      </div>
+    </div>
+    <div id="fourth-page" class="page">
+      <p class="text-3xl font-bold text-center">STAGIONE SPORTIVA 2022/23</p>
+      <p class="text-2xl font-bold text-center">
+        POLICY PER LA TUTELA DEI MINORI
+      </p>
+      <p class="text-2xl font-bold text-center">CODICI DI CONDOTTA</p>
+      <p class="text-center mt-44 text-xl">
+        IL SIG. {{orgPerson.surname}} {{orgPerson.name}}
+      </p>
+
+      <p class="mt-24">
+        RUOLO IN SOCIETA: (Contrassegnare il ruolo attribuito)
+      </p>
+      <ul class="list-disc">
+        <li class="mt-5">
+          <div class="flex gap-2 align-baseline">
+            <div class="border-2 w-5 h-5"></div>
+            <p>DIRIGENTE</p>
+          </div>
+        </li>
+        <li class="mt-5">
+          <div class="flex gap-2 align-baseline">
+            <div class="border-2 w-5 h-5"></div>
+            <p>ALLENATORE</p>
+          </div>
+        </li>
+        <li class="mt-5">
+          <div class="flex gap-2 align-baseline">
+            <div class="border-2 w-5 h-5"></div>
+            <p>PREPARATORE ATLETICO o PREPARATORE PORTIERI</p>
+          </div>
+        </li>
+        <li class="mt-5">
+          <div class="flex gap-2 align-baseline">
+            <div class="border-2 w-5 h-5"></div>
+            <p>COLLABORATORE</p>
+          </div>
+        </li>
+        <li class="mt-5">
+          <div class="flex gap-2 align-baseline">
+            <div class="border-2 w-5 h-5"></div>
+            <p>ALTRO _____________________________________________________</p>
+          </div>
+        </li>
+      </ul>
+      <p class="mt-9 text-right">
+        Approvazione il delegato alla tutela dei minori Petrelli Alessandro
+      </p>
+      <p class="mt-9 text-center">
+        (Documento da firmare per accettazione e riconsegnare allegando
+        documento di riconoscimento)
+      </p>
+    </div>
+
+    <div id="fifth-page" class="page">
+      <p class="text-3xl font-bold text-center text-blue-600">
+        POLICY PER LA TUTELA DEI MINORI
+      </p>
+      <div id="introduction" class="mt-10">
+        <p class="text-xl font-bold text-blue-600 text-center">INTRODUZIONE</p>
+        <p class="mt-5">
+          Questa policy per la tutela dei minori è stata sviluppata dal Settore
+          Giovanile e Scolastico della FIGC, in stretta collaborazione con la
+          UEFA e con Terre des hommes. La policy si basa su altri importanti
+          documenti e progetti che hanno come finalità la tutela dei minori.
+        </p>
+        <p class="mt-5">
+          La policy ribadisce e rafforza l’impegno di SGS nel garantire che il
+          calcio sia uno sport sicuro, un’esperienza positiva e divertente per
+          tutti i bambini e per tutti i ragazzi coinvolti, indipendentemente
+          dalla loro età, genere, orientamento sessuale, etnia e background
+          sociale, religione e livello di abilità o disabilità.
+        </p>
+        <p class="mt-5">
+          Il documento descrive i principi fondamentali che sono alla base
+          dell’approccio SGS e UEFA alla tutela dei minori e le azioni e gli
+          impegni presi per implementare questo approccio.
+        </p>
+        <p class="mt-5">
+          Questo impegno riflette la convinzione di SGS e della UEFA circa il
+          ruolo che il calcio può svolgere nel promuovere lo sviluppo, la salute
+          e il benessere dei giovani, pur dovendo riconoscere la possibilità,
+          confermata da alcuni casi a livello globale, che proprio il calcio
+          possa diventare il pretesto per situazioni potenzialmente pericolose e
+          dannose per i minori.
+        </p>
+        <p class="mt-5">
+          Questa policy fa parte di un più ampio kit di strumenti che comprende
+          linee guida, modelli, materiali di approfondimento, codici di condotta
+          e percorsi formativi realizzati con l’obiettivo di sostenere i
+          Coordinamenti Regionali SGS, Società impegnate nel calcio giovanile e
+          tutti i soggetti coinvolti nella crescita e nella cura dei giovani
+          calciatori e delle giovani calciatrici.
+        </p>
+        <p class="mt-5">
+          È importante acquisire e condividere feedback ed esperienze dirette
+          che saranno preziose per il futuro sviluppo degli strumenti per la
+          tutela dei minori e contribuiranno a perfezionare l’approccio SGS e
+          UEFA.
+        </p>
+        <p class="mt-5">
+          La continua attenzione per la tutela e la salvaguardia dei minori - e
+          l’impegno per la riduzione dei relativi rischi - dovrebbe essere
+          insita in tutto ciò che viene proposto e sviluppato nell’ambito del
+          calcio giovanile: dal reclutamento dei collaboratori, alla scelta dei
+          partner, allo svolgimento delle sessioni di allenamento e delle
+          partite.
+        </p>
+        <p class="mt-5">
+          Con l’introduzione di questa policy si è cercato di fornire uno
+          strumento completo ed esaustivo, che possa rispondere a tutte le
+          esigenze. Data la complessità della tematica è però possibile che vi
+          siano delle casistiche non direttamente trattate nella policy che
+          possono verificarsi nel corso dell’organizzazione e dello svolgimento
+          delle attività e degli eventi. In tali situazioni i valori e i
+          principi della policy dovrebbero ispirare e guidare le azioni e le
+          decisioni assunte nell’interesse dei minori.
+        </p>
+        <p class="mt-5">
+          Se necessario, sarà sempre possibile contattare l’ufficio preposto per
+          chiarimenti o consigli.
+        </p>
+      </div>
+      <div id="general" class="mt-10">
+        <p class="text-xl font-bold text-blue-600 text-center">
+          DISPOSIZIONI GENERALI
+        </p>
+        <div id="articles">
+          <div id="article-1" class="mb-2">
+            <p class="font-semibold">Articolo 1 Ambito di applicazione</p>
+            <p>
+              Questa policy è rivolta a tutti coloro che ricoprono un ruolo o
+              sono coinvolti a qualsiasi titolo nel percorso di crescita e
+              formazione dei giovani calciatori e delle giovani calciatrici
+              siano essi Società, Scuole Calcio o persone fisiche.
+            </p>
+          </div>
+          <div id="article-2" class="mb-2">
+            <p class="font-semibold">Articolo 2 Finalità</p>
+            <p>
+              Questo documento è stato elaborato e diffuso per definire linee
+              guida e procedure utili a coloro che lavorano con e per i minori
+              in ambito calcistico e si collega, venendo da essi integrata, ad
+              altri documenti fondamentali disponibili sulla piattaforma.
+            </p>
+          </div>
+          <div id="article-3" class="mb-2">
+            <p class="font-semibold">Articolo 3 Glossario Abuso</p>
+            <p>
+              Qualunque atto, che leda fisicamente o psicologicamente un minore,
+              che procuri direttamente o indirettamente un danno o precluda le
+              prospettive di un salutare e sicuro sviluppo verso l’età adulta.
+              Può consistere anche nell’uso improprio, eccessivo, illecito o
+              arbitrario di qualcosa o incapacità di agire nel modo corretto che
+              si traducono in un danno, o nel rischio di arrecare un danno, per
+              un minore, tale da comprometterne lo sviluppo. Sono da ritenersi
+              inclusi nella definizione: l’abuso fisico, emotivo/psicologico e
+              sessuale, anche se perpetrati attraverso l’utilizzo di strumenti
+              digitali (online).
+            </p>
+          </div>
+          <div id="article-4" class="mb-2">
+            <p class="font-semibold">Articolo 4 Bullismo</p>
+            <p>
+              Comportamenti offensivi e/o aggressivi che un singolo individuo o
+              più persone mettono in atto, ripetutamente nel corso del tempo, ai
+              danni di una o più persone con lo scopo di esercitare un potere o
+              un dominio sulla vittima. Comportamenti di prevaricazione e
+              sopraffazione ripetuti e atti ad intimidire o turbare un soggetto
+              che determinano una condizione di disagio, insicurezza, paura (ad
+              es. insulti), esclusione o isolamento, diffusione di notizie
+              infondate, minacce di ripercussioni fisiche o di danneggiamento di
+              oggetti posseduti dalla vittima. Trattasi, in generale, di
+              comportamenti che provocano nella vittima disagio nei confronti di
+              un gruppo più o meno vasto, composto per lo più da coetanei.
+            </p>
+          </div>
+
+          <div id="article-5" class="mb-2">
+            <p class="font-semibold">Articolo 5 Emotivo</p>
+            <p>
+              Maltrattamento emotivo reiterato e tale da causare gravi e
+              persistenti effetti sullo sviluppo emotivo del bambino attraverso
+              aggressioni e violenze verbali o pressioni psicologiche. Può
+              includere il tentativo di trasmettere e generare una sensazione di
+              inutilità, di non essere amati, di essere inadeguati o apprezzati
+              soltanto in quanto utili a soddisfare le esigenze di un soggetto
+              terzo. Può influire anche sullo sviluppo generando, nel corso
+              delle età, frequenti status di paura o sensazione di costante
+              pericolo. L’abuso emotivo è elemento caratterizzante di tutti i
+              tipi di abuso ma può verificarsi anche indipendentemente da
+              questi.
+            </p>
+          </div>
+          <div id="article-6" class="mb-2">
+            <p class="font-semibold">Articolo 6 Negligenza</p>
+            <p>
+              Trascurare in modo persistente e sistematico i bisogni fisici o
+              psicologici del minore e il loro adeguato soddisfacimento. Può
+              avere conseguenze fisiche ed emotive condizionando soprattutto lo
+              sviluppo psicologico e cognitivo.
+            </p>
+          </div>
+          <div id="article-7" class="mb-2">
+            <p class="font-semibold">Articolo 7 Fisico</p>
+            <p>
+              Danno fisico inflitto ad un minore. Rientrano in questa casistica
+              ma non la esauriscono le azioni volte a: percuotere, colpire,
+              scuotere, lanciare, scottare, soffocare. Viene causato un danno
+              fisico anche quando un genitore o un tutore simulano dei sintomi
+              relativi a problemi di salute, malattie o infortuni o
+              deliberatamente li causano ai danni del minore di cui sono tenuti
+              a prendersi cura.
+            </p>
+          </div>
+          <div id="article-8" class="mb-2">
+            <p class="font-semibold">Articolo 8 Sessuale</p>
+            <p>
+              Il coinvolgimento, intenzionale e interpersonale, di un minore in
+              esperienze sessuali forzate o comunque inappropriate dal punto di
+              vista dello stadio di sviluppo. Tali esperienze possono non
+              comportare violenza esplicita o lesioni; possono avvenire senza
+              contatto fisico e/o essere vissute come osservatori. L’abuso
+              sessuale ricomprende tutti gli atti riguardanti attività sessuale
+              con minorenni (con riferimento alle soglie d'età previste
+              dall’art. 609 codice penale), lo sfruttamento della prostituzione,
+              la pornografia minorile, la corruzione di minorenne, l’adescamento
+              di minori in internet. Una particolare tipologia di abuso sessuale
+              è rappresentata dallo sfruttamento sessuale, consistente nel
+              comportamento di chi percepisce danaro od altre utilità, da parte
+              di singoli o di gruppi criminali organizzati.
+            </p>
+          </div>
+          <div id="article-9" class="mb-2">
+            <p class="font-semibold">Articolo 9 Bambini/Ragazzi</p>
+            <p>
+              Ogni soggetto di età inferiore ai diciotto anni. Con questo
+              termine ci si riferisce sia al bambino che all’adolescente, quindi
+              la policy riguarda la tutela di tutti i minori, fino al compimento
+              dei 18 anni.
+            </p>
+          </div>
+          <div id="article-10" class="mb-2">
+            <p class="font-semibold">
+              Articolo 10 Delegato Per La Tutela Dei Minori
+            </p>
+            <p>
+              Persona incaricata e responsabile dell’implementazione e della
+              corretta applicazione della policy per la tutela dei minori e di
+              tutte le regole e procedure ad essa relative.
+            </p>
+          </div>
+          <div id="article-11" class="mb-2">
+            <p class="font-semibold">Articolo 11 Danno</p>
+            <p>
+              Azione o omissione che compromette la sicurezza e il benessere di
+              un soggetto.
+            </p>
+          </div>
+          <div id="article-12" class="mb-2">
+            <p class="font-semibold">Articolo 12 Operatore</p>
+            <p>
+              Allenatore, dirigente, arbitro, assistente, collaboratore, medico,
+              membro dello staff o qualsiasi altra persona responsabile di un
+              evento o di un’attività dal punto di vista tecnico, medico o
+              amministrativo-gestionale.
+            </p>
+          </div>
+          <div id="article-13" class="mb-2">
+            <p class="font-semibold">Articolo 13 Protezione</p>
+            <p>
+              Parte della tutela e della promozione del benessere. Si riferisce
+              alle azioni intraprese per tutelare particolari categorie di
+              minori che soffrono o che potrebbero soffrire un danno
+              significativo.
+            </p>
+          </div>
+          <div id="article-14" class="mb-2">
+            <p class="font-semibold">Articolo 14 Controlli parametro</p>
+            <p>
+              Controlli e verifiche effettuati per lo screening e per le
+              valutazioni dello status quo al fine dell’implementazione della
+              policy.
+            </p>
+          </div>
+          <div id="article-15" class="mb-2">
+            <p class="font-semibold">Articolo 15 Salvaguardia/tutela</p>
+            <p>
+              Complesso di regole di comportamento volte a garantire che il
+              calcio e le relative attività siano svolte in un ambiente sicuro e
+              positivo in modo tale che possano sempre rappresentare
+              un’esperienza piacevole per tutti i bambini e per tutti i ragazzi
+              che devono essere messi al sicuro da potenziali danni,
+              maltrattamenti o abusi.
+            </p>
+          </div>
+          <div id="article-16" class="mb-2">
+            <p class="font-semibold">Articolo 16 Finalità</p>
+            <p>
+              Settore Giovanile e Scolastico della Federazione Italiana Giuoco
+              Calcio organo di sviluppo e di servizio per la promozione,
+              l’organizzazione e la disciplina dell’attività sportiva e
+              formativa dei giovani calciatori e delle giovani calciatrici di
+              tutto il territorio nazionale.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="sgs" class="mt-10">
+        <p class="text-xl font-bold text-blue-600 text-center">
+          L’APPROCCIO SGS ALLA TUTELA DEI MINORI I CINQUE OBIETTIVI
+        </p>
+        <p class="mt-5">
+          La policy di tutela dei minori è un insieme di regole e di strumenti
+          incentrati, secondo quanto previsto a livello UEFA, su cinque
+          obiettivi o aree di intervento. Il raggiungimento di tali obiettivi è
+          fondamentale sia per la promozione della tutela dei minori sia per un
+          più completo e diffuso rispetto dei valori del calcio.
+        </p>
+        <div id="targets-general">
+          <p>Di seguito i cinque obiettivi:</p>
+          <p class="mt-1">
+            <strong>OBIETTIVO 1:</strong> Implementare la policy e gettare le
+            basi per un diffuso intervento nell’ambito della tutela dei minori.
+          </p>
+          <p class="mt-1">
+            <strong>OBIETTIVO 2:</strong> Garantire lo studio, l’elaborazione e
+            l’adozione di strumenti e procedure efficaci.
+          </p>
+          <p class="mt-1">
+            <strong>OBIETTIVO 3:</strong> Sensibilizzare e formare sulle
+            tematiche relative agli abusi e alla tutela dei minori.
+          </p>
+          <p class="mt-1">
+            <strong>OBIETTIVO 4:</strong> Fare gioco di squadra per
+            l’individuazione e la segnalazione di problemi, rischi e pericoli.
+          </p>
+          <p class="mt-1">
+            <strong>OBIETTIVO 5:</strong> Misurare, attraverso analisi, feedback
+            e indicatori, il successo e l’efficacia delle iniziative e degli
+            strumenti impiegati nell’ambito della tutela dei minori.
+          </p>
+        </div>
+        <div id="goals" class="mt-5">
+          <div id="goal-1">
+            <p class="text-blue-300 underline">Goal 1</p>
+            <div id="goal-1-1" class="mt-2">
+              <p class="text-blue-300 mb-2">1.1 Responsabilità</p>
+              <div class="flex gap-3">
+                <p>1.1.1</p>
+                <p>
+                  La tutela dei minori è responsabilità di tutti. L'oggetto
+                  dalla presente Policy mira a promuovere, nell'interesse
+                  superiore dei minori, la creazione di un ambiente che
+                  supporti, tuteli e protegga i minori.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.1.2</p>
+                <p>
+                  Tutti coloro i quali sono impegnati, a qualunque livello,
+                  titolo e con qualsiasi mansione, nell’organizzazione e nello
+                  svolgimento di attività ed eventi SGS, siano essi
+                  collaboratori federali o tesserati per società affiliate o
+                  genitori devono riconoscere ed essere consapevoli dei loro
+                  doveri nell’ambito della tutela dei minori e devono agire in
+                  modo da promuovere attivamente il benessere dei bambini e dei
+                  ragazzi e le loro specifiche necessità. È responsabilità di
+                  tutti adottare azioni e misure appropriate e mirate per
+                  implementare questa policy.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.1.3</p>
+                <p>
+                  Posta la responsabilità comune e condivisa nella tutela dei
+                  minori, FIGC e SGS incoraggeranno e supporteranno in modo
+                  attivo le Società affiliate nello sviluppo di procedure e
+                  nella definizione di un’organizzazione interna basate sul
+                  contenuto della policy.
+                </p>
+              </div>
+            </div>
+            <div id="goal-1-2" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                1.2 Definizione di “tutela dei minori”
+              </p>
+              <div class="flex gap-3">
+                <p>1.2.1</p>
+                <p>
+                  Ai fini della policy la “tutela dei minori” è definita come il
+                  complesso di regole di comportamentovolte a garantire che il
+                  calcio sia un’esperienza sicura, positiva e divertente per
+                  tutti i bambini eper tutti i ragazzi e che i minori siano
+                  posti al sicuro da eventuali pericoli o abusi quando
+                  sonocoinvolti, a qualsiasi titolo, nel gioco del calcio e
+                  nelle attività SGS.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.2.2</p>
+                <p>
+                  La tutela dei minori azioni di sensibilizzazione, di
+                  prevenzione per ridurre le possibilità di pericoloo danno, di
+                  segnalazione nonché di risposta per assicurare un intervento
+                  efficace in reazione adogni segnalazione di abuso,
+                  supportando, tutelando e proteggendo il minore coinvolto. Ciò
+                  riflette la necessità di promuovere gli interessi dei minori e
+                  rispettare sia le norme internazionali sia lalegislazione
+                  nazionale, in particolare per quanto riguarda la potenziale
+                  violazione delle norme inmateria di diritto penale.
+                </p>
+              </div>
+            </div>
+            <div id="goal-1-3" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                1.3 Cosa si intende per “danno” e “abuso”?
+              </p>
+              <div class="flex gap-3">
+                <p>1.3.1</p>
+                <p>
+                  Tutti i soggetti menzionati al punto 1.1.2 devono essere
+                  consapevoli del fatto che gli abusi, dannie le questioni
+                  relative alla tutela dei minori sono difficilmente
+                  suscettibili di una classificazioneunivoca. Nella maggior
+                  parte dei casi si assiste ad una sovrapposizione e compresenza
+                  di più tipologie di abuso o danno arrecato.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.3.2</p>
+                <p>
+                  Il danno può verificarsi in modalità differenti e comporta
+                  genericamente la compromissione della sicurezza e del
+                  benessere del bambino. Tale circostanza può essere la
+                  conseguenza di un abuso consapevole da parte di un soggetto,
+                  ma può anche essere dettata da una formazione carente e
+                  fallace che rende tale soggetto privo delle conoscenze e delle
+                  competenze necessarie ad adempiere alle sue responsabilità.
+                  violazione delle norme inmateria di diritto penale.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.3.3</p>
+                <p>
+                  Per abuso si intende qualunque atto che leda fisicamente o
+                  psicologicamente un minore, che procuri direttamente o
+                  indirettamente un danno o precluda le prospettive di un
+                  salutare e sicurosviluppo verso l’età adulta.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.3.4</p>
+                <p>
+                  I minori possono subire abusi o maltrattamenti da parte di
+                  soggetti noti, in ambiente domestico o presso istituzioni o
+                  associazioni. In alternativa, gli abusi e i maltrattamenti
+                  possono essere perpetrati da soggetti estranei (es. via web).
+                  Gli abusi e i maltrattamenti possono essere compiuti da un
+                  soggetto adulto ovvero da minori.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.3.5</p>
+                <p>
+                  L’abuso può assumere varie forme: fisico, emotivo/psicologico,
+                  sessuale può avere la forma dell’incuria o della negligenza,
+                  della violenza in base a quanto segnalato in apertura.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.3.6</p>
+                <p>
+                  Anche se i problemi relativi alla tutela dei minori
+                  coinvolgono generalmente soggetti adulti, i minorenni possono
+                  a loro volta rendersi protagonisti di atti di abuso o
+                  maltrattamento. Ciò si verifica normalmente quando il minore è
+                  in una posizione di potere o influenza (ad esempio perché di
+                  età maggiore o investito di particolare autorità - ad esempio
+                  perché capitano della squadra).Questo fenomeno è spesso
+                  rubricato come bullismo.
+                </p>
+              </div>
+            </div>
+            <div id="goal-1-4" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                1.4 Rischi particolari nella tutela dei minori nel calcio
+              </p>
+              <div class="flex gap-3">
+                <p>1.4.1</p>
+                <p>
+                  Esistono diverse situazioni molto specifiche in cui possono
+                  verificarsi danni o abusi nel calcio.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.4.2</p>
+                <p>
+                  LESIONI FISICHE: ogni sport comporta un rischio di lesioni
+                  fisiche e infortuni e il calcio non faeccezione. Tuttavia,
+                  l’eccessivo desiderio di raggiungere il successo e ottenere
+                  una vittoria puòcomportare una pressione nei confronti dei
+                  bambini e dei ragazzi che vengono spinti oltre ciò che sarebbe
+                  appropriato e ragionevolmente esigibile, tenuto conto dell’età
+                  e dell’abilità. Questo può determinare l’insorgere o
+                  l’aggravarsi di infortuni o patologie.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.4.3</p>
+                <p>
+                  PRESSIONI SULLA PRESTAZIONE: la vittoria è una parte
+                  importante del calcio. Tuttavia, sottoporrei calciatori e le
+                  calciatrici ad una pressione eccessiva, nell’intento di
+                  raggiungere il successo o dimettersi in mostra, può essere
+                  dannoso da un punto di vista psicologico, emotivo e fisico.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.4.4</p>
+                <p>
+                  CURA DELLA PERSONA: spogliatoi, docce e situazioni che
+                  implicano uno stretto contatto fisico (ad es. fisioterapia e
+                  trattamenti medici) possono offrire opportunità di bullismo,
+                  di scattare fotografie o effettuare riprese non appropriate e
+                  autorizzate o possono in qualche modo favorire un abuso,
+                  soprattutto sessuale.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.4.5</p>
+                <p>
+                  TRASFERTE, VIAGGI E PERNOTTI: I viaggi e le trasferte che
+                  prevedono il pernotto presentanonumerosi rischi potenziali,
+                  tra cui supervisione inadeguata, allontanamento dei minori,
+                  accesso all’alcool o a inadeguati contenuti reperibili in tv o
+                  sul web, problemi relativi all’uso dei social mediae
+                  possibilità che si verifichi un abuso, con particolare
+                  riferimento all’abuso sessuale.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.4.6</p>
+                <p>
+                  OPERATORI E RAPPORTI PERSONALI: le relazioni che all’interno
+                  di un gruppo squadra vengono a crearsi con l’allenatore o con
+                  altri operatori (come ad es. dirigenti, fisioterapisti e
+                  medici) sono un aspetto importante e positivo del calcio.
+                  Molti bambini e ragazzi sviluppano relazioni strette e
+                  diprofonda fiducia con i loro allenatori che hanno spesso un
+                  ruolo significativo nella vita dei giovani atleti, soprattutto
+                  se questi ultimi non hanno relazioni sane e positive con altri
+                  adulti. Tuttavia,mentre molti allenatori costruiscono a loro
+                  volta relazioni positive nell’interesse dei minori
+                  loroaffidati, possono riscontrarsi dei casi in cui l’autorità
+                  di tali soggetti e la fiducia in loro riposta possono
+                  diventare potenzialmente dannosi per i bambini e per i ragazzi
+                  e divenire fonte di abuso.
+                </p>
+              </div>
+            </div>
+            <div id="goal-1-5" class="mt-5">
+              <div>
+                <p class="text-blue-300 mb-2">
+                  1.5 Collegamenti con la legislazione o le politiche nazionali:
+                </p>
+                <p>
+                  la presente policy stabilisce i requisiti e gli standard
+                  minimi per la tutela dei minori. Tutte le azioni intraprese in
+                  questo ambito devono essereposte in essere nel pieno rispetto
+                  delle normative vigenti in materia
+                </p>
+              </div>
+            </div>
+            <div id="goal-1-6" class="mt-5">
+              <div>
+                <p class="text-blue-300 mb-2">1.6 Azioni extra-calcistiche:</p>
+                <p>
+                  la presente policy si concentra sulle situazioni che si
+                  verificano (e che possono coinvolgere i minori) nel corso
+                  delle attività FIGC-SGS direttamente organizzate dal Settore o
+                  portate avanti dalle Società affiliate. Tuttavia,
+                  comportamenti inappropriati o dannosi che si verificano al di
+                  fuori delle attività calcistiche, siano essi individuali o di
+                  gruppo, possono a loro volta violare i principi stabiliti
+                  nella policy e andare in contrasto con i valori che il calcio
+                  promuove. È pertanto opportuno vigilare sulle situazioni
+                  potenzialmente pericolose che possano produrre effettidannosi
+                  anche sul calcio e sul gioco dei bambini e dei ragazzi
+                  rimandando la gestione della problematica, laddove necessario,
+                  ad altre associazioni o istituzioni preposte.
+                </p>
+              </div>
+            </div>
+            <div id="goal-1-7" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                1.7 Principi chiave alla base della policy
+              </p>
+              <div class="flex gap-3">
+                <p>1.7.1</p>
+                <p>
+                  Il calcio deve essere un’esperienza sicura, positiva e
+                  divertente per tutti i calciatori e per tutte lecalciatrici.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.2</p>
+                <p>
+                  Tutti i calciatori e tutte le calciatrici hanno pari diritto
+                  alla tutela, alla protezione, alla promozione del loro
+                  benessere e alla partecipazione alle attività,
+                  indipendentemente dalla loro età, sesso, orientamento
+                  sessuale, etnia o background sociale, religione e livello di
+                  abilità o disabilità.
+                </p>
+              </div>
+
+              <div class="flex gap-3">
+                <p>1.7.3</p>
+                <p>
+                  Tutte le azioni poste in essere nell’ambito della tutela dei
+                  minori devono perseguire il miglioreinteresse per i bambini e
+                  i ragazzi.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.4</p>
+                <p>
+                  Tutti hanno la responsabilità della tutela e della protezione
+                  dei minori. Anche i minori stessi possono giocare un ruolo
+                  importante, fornendo un contributo attivo per la loro tutela e
+                  quella deglialtri bambini e ragazzi, sebbene la responsabilità
+                  ultima resti in capo agli adulti.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.5</p>
+                <p>
+                  Le misure di tutela devono essere inclusive e non
+                  discriminatorie, considerando che alcuni bambini (come ad
+                  esempio quelli con disabilità) possono essere maggiormente a
+                  rischio di abuso.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.6</p>
+                <p>
+                  Trasparenza e apertura sono essenziali per quanto riguarda la
+                  tutela dei minori. Abusi e danni possono verificarsi più
+                  frequentemente quando il personale, i volontari, gli operatori
+                  sportivi, i bambini, i ragazzi e le famiglie non sono
+                  sufficientemente preparati e informati.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.7</p>
+                <p>
+                  Il tema della tutela e della protezione dei minori deve essere
+                  affrontato con serietà e professionalità. Se necessario,
+                  devono essere poste in essere misure di tutela che arrivino
+                  fino al rinvio della gestione della casistica alle forze
+                  dell’ordine e alle agenzie/associazioni di protezione dei
+                  minori.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.8</p>
+                <p>
+                  La tutela dei minori è una responsabilità comune che deve
+                  essere affrontata in sinergia con tuttii soggetti
+                  potenzialmente coinvolti, comprese organizzazioni, agenzie,
+                  associazioni, enti governativi.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.9</p>
+                <p>
+                  È necessario mantenere la riservatezza dei dati personali
+                  delle persone coinvolte (compreso ilnome della persona che
+                  segnala l’abuso, il minore vittima dell’abuso e il presunto
+                  autore dell’abuso). Tali informazioni, posto il rispetto delle
+                  vigenti normative in materia in tutte le azioni intraprese,
+                  non devono essere divulgate, a meno che ciò non sia necessario
+                  per la trasmissionedi indicazioni che abbiano come scopo
+                  quello di garantire la tutela del minore (ad es. laddove
+                  siconfiguri un’ipotesi di reato).
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>1.7.10</p>
+                <p>
+                  Tutte le azioni intraprese devono muoversi in un contesto di
+                  legalità e rispettare tutte le normativevigenti.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="goal-2" class="mt-5">
+            <p class="text-blue-300 underline">Goal 2</p>
+            <div id="goal-2-1" class="mt-2">
+              <p class="text-blue-300 mb-2">2.1 Adozione della policy</p>
+              <div class="flex gap-3">
+                <p>2.1.1</p>
+                <p>
+                  Il Settore Giovanile e Scolastico, come settore preposto
+                  all’organizzazione delle attività dedicate a bambini e ragazzi
+                  e quindi come soggetto che deve occuparsi anche della loro
+                  tutela, ha adottatoquesta policy congiuntamente ad altri
+                  strumenti quali linee guida e codici di condotta.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.1.2</p>
+                <p>
+                  Si impegnano ad adottare e rispettare la policy tutte le
+                  Società affiliate a FIGC che operano nell’ambito dell’attività
+                  giovanile, i relativi tesserati, i collaboratori FIGC-SGS e
+                  tutti coloro i qualivengano impiegati a qualsiasi titolo e in
+                  qualsiasi ruolo nelle attività direttamente o
+                  indirettamenteorganizzate dal Settore Giovanile e Scolastico.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.1.3</p>
+                <p>
+                  Le società affiliate sono incoraggiate ad implementare tutti
+                  gli strumenti messi a disposizione,adattando procedure e
+                  contenuti alle diverse realtà territoriali.
+                </p>
+              </div>
+            </div>
+            <div id="goal-2-2" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                2.2 Identificazione dei Delegato per la tutela dei minori1
+              </p>
+              <div class="flex gap-3">
+                <p>2.2.1</p>
+                <p>
+                  SGS designerà un Delegato per la tutela dei minori a livello
+                  nazionale per garantire il rispetto dellapolicy e delle
+                  indicazioni in essa contenute. Delegati regionali per la
+                  tutela dei minori saranno individuati presso tutti i
+                  Coordinamenti Regionali SGS. Questi soggetti opereranno a
+                  stretto contatto con le Società affiliate e con eventuali
+                  soggetti terzi coinvolti (agenzie, associazioni, enti...)
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.2.2</p>
+                <p>
+                  Tutte le Società affiliate saranno incoraggiate a designare un
+                  proprio Delegato interno per la tutela dei minori che funga da
+                  raccordo con la struttura regionale e nazionale e che
+                  rappresenti un primopunto di raccolta e analisi di
+                  segnalazioni e problematiche.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.2.3</p>
+                <p>
+                  Il ruolo del Delegato è quello di acquisire le segnalazioni e
+                  fornire il primo supporto circa la risposta e l’iter da
+                  seguire nel rispetto delle procedure stabilite, nonché quello
+                  di vigilare sulla correttaapplicazione della policy e degli
+                  altri strumenti [Vedi le linee guida sui ruoli e le
+                  responsabilitàDelegato per la tutela dei minori].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.2.4</p>
+                <p>
+                  Si raccomanda di affidare il ruolo di Delegato a soggetti
+                  debitamente formati sui temi della tutelae protezione dei
+                  minori, tenendo conto delle abilità, delle competenze
+                  acquisite nel settore giovanile, delle esperienze maturate e
+                  della personale attitudine. Per quanto riguarda le
+                  Societàaffiliate il ruolo può essere assunto da chiunque sia
+                  nelle condizioni di svolgerlo in maniera efficiente ed
+                  efficace dati i rapporti con gli operatori sportivi e con i
+                  giovani atleti. [Vedi le lineeguida sui ruoli e le
+                  responsabilità del Delegato per la tutela dei minori].
+                </p>
+              </div>
+            </div>
+            <div id="goal-2-3" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                2.3 Iter di selezione degli operatori sportivi
+              </p>
+              <div class="flex gap-3">
+                <p>2.3.1</p>
+                <p>
+                  Verranno introdotte procedure di selezione degli operatori
+                  sportivi, siano essi collaboratori SGS o membri degli Staff
+                  delle Società affiliate, più sicure per garantire che i
+                  candidati siano idonei adoperare nell’ambito dell’attività
+                  giovanile e a diretto contatto con minori.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.3.2</p>
+                <p>
+                  Le procedure di selezione devono prevedere l’acquisizione di
+                  documenti e autocertificazioni, nonché verifiche pre e post
+                  selezione e inserimento [Vedi linee guida per le selezioni
+                  sicure].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.3.3</p>
+                <p>
+                  Per impedire a soggetti non idonei di lavorare con bambini e
+                  ragazzi, nessun operatore sportivodeve essere impegnato nelle
+                  attività prima che vengano portate a termine tutte le
+                  verifiche necessarie e prima che venga acquisita tutta la
+                  documentazione richiesta. L’iter si concluderàcon un momento
+                  formativo-informativo sulle tematiche relative alla tutela dei
+                  minori. Nel periodo di formazione può essere previsto lo
+                  svolgimento di attività sotto la supervisione di altro
+                  soggetto.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.3.4</p>
+                <p>
+                  La documentazione relativa all’iter di selezione deve essere
+                  debitamente conservata in modo tale che sia possibile
+                  consultare tutti i dati dei profili selezionati ma anche i
+                  dati relativi alla selezionestessa. Queste informazioni devono
+                  essere archiviate e conservate nel rispetto della vigente
+                  normativa in tema di privacy e tutela dei dati personali.
+                </p>
+              </div>
+            </div>
+            <div id="goal-2-4" class="mt-5">
+              <p class="text-blue-300 mb-2">2.4 Codici di condotta</p>
+              <div class="flex gap-3">
+                <p>2.4.1</p>
+                <p>
+                  A tutte le attività che coinvolgano minori verranno applicati
+                  dei chiari Codici di Condotta che indichino i comportamenti da
+                  tenere e le procedure da seguire per la tutela dei minori in
+                  tutte lesituazioni e gli ambiti afferenti al gioco del calcio
+                  e alla pratica sportiva da parte di bambini e ragazzi
+                  [Consultare la Sezione dedicata per le disposizioni dei codici
+                  di condotta relativi alla tutela deiminori].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.2</p>
+                <p>
+                  Tutti i soggetti impegnati a qualsiasi titolo e in qualsiasi
+                  ruolo nell’organizzazione e nella realizzazione delle attività
+                  FIGC-SGS dovranno prendere visione e sottoscrivere i codici di
+                  condottache saranno allegati ad eventuali accordi di
+                  collaborazione o al modulo di censimento/tesseramento.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.3</p>
+                <p>
+                  SGS incoraggia le Società affiliate ad adottare e
+                  sottoscrivere i codici di condotta quale strumento per la
+                  tutela dei minori e l’impegno di tutti gli operatori in questo
+                  ambito.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.4</p>
+                <p>
+                  Tutte le violazioni dei codici di condotta dovranno essere
+                  tempestivamente segnalate al soggetto preposto alla tutela dei
+                  minori (Delegato). Le relative segnalazioni dovranno essere
+                  corredate dalleinformazioni necessarie all’ottimale
+                  risoluzione della problematica.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.5</p>
+                <p>
+                  In caso di segnalazione di sospettata violazione del codice di
+                  condotta, l’accertamento dei fattidovrà essere condotto da un
+                  soggetto in possesso delle necessarie conoscenze e competenze.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.6</p>
+                <p>
+                  Come soggetto impegnato in prima linea nella tutela dei
+                  minori, FIGC/SGS adopererà tutte le misure necessarie per
+                  prevenire eventuali casi di violazione dei codici di condotta
+                  da parte dei collaboratori SGS. Qualora dovessero verificarsi
+                  delle violazioni verranno intraprese le azioni per la
+                  cessazione delle stesse e la sanzione dei soggetti
+                  responsabili. Allo stesso modo SGS supporteràle società nella
+                  corretta applicazione dei codici.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.7</p>
+                <p>
+                  In caso di violazioni è opportuno prendere in considerazione
+                  la sospensione dalle attività del trasgressore fino
+                  all’accertamento dei fatti.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.8</p>
+                <p>
+                  I codici di condotta potranno contenere specifiche misure
+                  disciplinari in caso di violazione. Le misure e le sanzioni
+                  poste in essere potranno andare dall’ammonimento verbale fino
+                  alla sospensione e alla cessazione della collaborazione che
+                  potrebbero sommarsi a momenti di formazione e
+                  sensibilizzazione aggiuntivi.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.4.9</p>
+                <p>
+                  Le sanzioni comminate in caso di violazioni di codici di
+                  condotta si aggiungono a eventuali sanzioni comminate dalle
+                  autorità competenti qualora le violazioni abbiano assunto
+                  rilevanza civile o penale.
+                </p>
+              </div>
+            </div>
+            <div id="goal-2-5" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                2.5 Supervisione e impiego degli operatori sportivi nelle
+                attività
+              </p>
+              <div class="flex gap-3">
+                <p>2.5.1</p>
+                <p>
+                  In generale, dovrebbe essere evitato il coinvolgimento di un
+                  solo collaboratore sportivo nello svolgimento di un’attività
+                  che coinvolga minori. Quando l’attività coinvolge bambini e
+                  ragazzi dovrebbero sempre essere impiegati almeno due adulti.
+                  Stante le difficoltà che potrebbero riscontrarsi
+                  nell’adempiere a questa previsione, le attività con bambini e
+                  ragazzi devono sempresvolgersi in luoghi aperti, ad accesso
+                  libero e dove l’osservazione di quanto proposto sia
+                  sempreagevole. Le attività in gruppo devono sempre essere
+                  preferite rispetto a lavori individuali che coinvolgano un
+                  solo minore e un adulto.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.2</p>
+                <p>
+                  Il numero di operatori sportivi deve sempre essere tale da
+                  garantire un’adeguata supervisionedegli atleti, tenuto conto
+                  del contesto, dell’età e della abilità dei bambini e dei
+                  ragazzi convolti. In fase di progettazione e organizzazione,
+                  il numero di minori e di operatori sportivi coinvolti e
+                  impiegati deve sempre essere considerato come elemento facente
+                  parte della valutazione dei rischi di una data attività o di
+                  un dato evento.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.3</p>
+                <p>
+                  SGS raccomanda i seguenti rapporti adulto/minore: 1 adulto per
+                  10 bambini dai 13 ai 18 anni, 1 adulto per 8 bambini dai 9 ai
+                  12 anni,1 adulto per 6 bambini dai 5 agli 8 anni e 1 adulto
+                  per 3 bambini di età pari o inferiore a 4 anni.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.4</p>
+                <p>
+                  Se il numero di adulti non è sufficiente per raggiungere il
+                  livello di supervisione richiesto deveessere considerata una
+                  rimodulazione dell’attività o l’annullamento della stessa.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.5</p>
+                <p>
+                  In caso di assistenza sanitaria (ad es. visita medica,
+                  assistenza post infortunio, trattamento fisioterapico) i
+                  minori hanno diritto alla presenza di un coetaneo o di un
+                  adulto da loro designato che affianchi il medico o l’operatore
+                  sanitario che sta somministrando l’assistenza o iltrattamento.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.6</p>
+                <p>
+                  Esistono alcuni requisiti specifici per la raccolta di
+                  campioni antidoping da effettuarsi su minoriche devono sempre
+                  essere rispettati nel corso delle procedure. Gli atleti
+                  minorenni di età pari osuperiore a 14 anni e in ogni caso i
+                  genitori o tutori o rappresentanti legali devono essere
+                  informaticirca la loro selezione per la sottoposizione al
+                  controllo antidoping in presenza di un adulto e possono
+                  scegliere di essere accompagnati da un operatore sportivo nel
+                  corso di tutte le procedure di raccolta dei campioni. Tale
+                  soggetto può essere sostituito da altro testimone chedovrà
+                  essere presente nel corso del controllo antidoping.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.7</p>
+                <p>
+                  I bambini e i ragazzi non dovrebbero ricevere cure personali
+                  (es assistenza durante la doccia) da parte degli operatori
+                  sportivi. Se non sono in grado di portare a termine
+                  autonomamente tali attivitàdeve essere sempre un genitore, il
+                  tutore o altro soggetto da questi autorizzato,
+                  possibilmentedello stesso sesso, a farsi carico
+                  dell’assistenza.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.8</p>
+                <p>
+                  Spogliatoi, docce, ecc. devono essere sorvegliati, così come
+                  l’accesso ai relativi locali, in modo tale da garantire la
+                  privacy dei minori. Solo gli adulti responsabili della
+                  supervisione dei minori devono avere accesso all’area
+                  spogliatoi. Le procedure e le modalità per l’accesso a tali
+                  aree devono essere definite e condivise.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.9</p>
+                <p>
+                  In caso di attività che prevedano il pernotto (ad es. nel
+                  corso di trasferte), non deve mai essereprevista le
+                  possibilità che a un minore venga assegnata una camera in
+                  condivisione con un operatore sportivo (salve particolari e
+                  comprovate esigenze e nulla osta da parte di genitori otutori)
+                  a meno che non vi sia un legame di parentela tra il minore e
+                  l’adulto.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.9</p>
+                <p>
+                  In caso di attività che prevedano il pernotto (ad es. nel
+                  corso di trasferte), non deve mai essereprevista le
+                  possibilità che a un minore venga assegnata una camera in
+                  condivisione con un operatore sportivo (salve particolari e
+                  comprovate esigenze e nulla osta da parte di genitori otutori)
+                  a meno che non vi sia un legame di parentela tra il minore e
+                  l’adulto.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.10</p>
+                <p>
+                  Devono essere stabilite delle chiare procedure da applicare in
+                  caso di irreperibilità, allontanamentoo scomparsa di un minore
+                  e qualora un genitore o un tutore non si faccia carico di
+                  prelevare il minore al termine di un’attività e lo stesso sia
+                  irrintracciabile o impossibilitato.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.5.11</p>
+                <p>
+                  Qualora per prendere parte alle attività il minore viaggi non
+                  accompagnato o con altro soggettodiverso dal genitore/tutore
+                  deve essere prevista l’acquisizione di un’autorizzazione
+                  sottoscrittadal genitore o dal tutore che autorizzi il viaggio
+                  o la presa in carico del minore.
+                </p>
+              </div>
+            </div>
+            <div id="goal-2-6" class="mt-5">
+              <p class="text-blue-300 mb-2">2.6 Visitatori e spettatori</p>
+              <div class="flex gap-3">
+                <p>2.6.1</p>
+                <p>
+                  SGS così come tutte le Società affiliate si impegna, nel corso
+                  di attività e competizioni che prevedano il libero accesso
+                  alla struttura sede dell’evento, a condividere con i
+                  visitatori e gli spettatori i principi della policy della
+                  quale devono essere accettate le condizioni.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.6.2</p>
+                <p>
+                  Ai visitatori e agli spettatori (compresi eventuali
+                  giornalisti/addetti stampa o comunicazione) nonè mai
+                  consentito rimanere da soli con bambini e ragazzi ed è sempre
+                  necessaria la presenza di un supervisore, salvo l’adulto
+                  coinvolto non sia un parente del minore.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.6.3</p>
+                <p>
+                  La sicurezza e il benessere dei bambini non devono essere
+                  compromessi nei rapporti con soggetti esterni come visitatori
+                  o spettatori. Informazioni private come contatti o indirizzi
+                  dei minori nondevono essere forniti a tali soggetti.
+                </p>
+              </div>
+            </div>
+
+            <div id="goal-2-7" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                2.7 Materiale video/fotografico e sicurezza online
+              </p>
+              <div class="flex gap-3">
+                <p>2.7.1</p>
+                <p>
+                  In caso di detenzione e/o acquisizione di materiale
+                  fotografico o video che ritragga un minore è sempre necessario
+                  acquisire la relativa liberatoria sottoscritta dai genitori o
+                  dai tutori al fine dipoter conservare e/o utilizzare tale
+                  materiale prodotto Immagini che risultino essere offensive o
+                  che potrebbero determinare una situazione di imbarazzo o di
+                  sfruttamento (es immagini in cui il minore non è completamente
+                  vestito) non devono mai essere acquisite o divulgate o
+                  condivise. In ogni caso, il minore che abbia compiuto 14 anni
+                  che si senta offeso dalla pubblicazione di materiale riferito
+                  alla sua persona ovvero i genitori o i tutori o i legali
+                  rappresentanti possono inoltrare una richiesta di oscuramento,
+                  rimozione o blocco di qualsiasi dato personale del minore
+                  diffuso in rete al responsabile della pubblicazione e/o
+                  condivisione. In caso di perdurante inerzia, è fatta salva la
+                  facoltà di avviare la procedura di segnalazione.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.7.2</p>
+                <p>
+                  Deve essere effettuata una valutazione del rischio circa
+                  l’influenza dell’uso delle tecnologie e deimedia sulla tutela
+                  e sulla sicurezza dei minori al fine di adottare le misure
+                  necessarie per la riduzione di eventuali rischi.
+                </p>
+              </div>
+
+              <div class="flex gap-3">
+                <p>2.7.3</p>
+                <p>
+                  SGS fornirà indicazioni sull’uso appropriato della tecnologia
+                  (Internet, telefoni cellulari, social media, ecc.) in
+                  relazione alla tutela dei minori e all’attuazione della
+                  policy.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.7.4</p>
+                <p>
+                  Qualora i minori abbiano libero accesso a internet presso
+                  strutture nelle quali sono in svolgimento attività o eventi
+                  SGS deve essere garantita l’impossibilità di accesso a
+                  materiale non idoneo o offensivo. Siti internet che promuovano
+                  l’abuso su minori o che contengano immagini o informazioni
+                  potenzialmente dannose per i minori devono essere bloccati sui
+                  dispositivi forniti da SGS o dalle Società Affiliate e
+                  utilizzati dagli operatori sportivi.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.7.5</p>
+                <p>
+                  Qualora dovessero essere ricevuti via web materiali offensivi
+                  o messaggi inappropriati non richiesti, il Delegato per la
+                  tutela dei minori di riferimento deve segnalare l’accaduto per
+                  permetterel’eventuale risoluzione da parte degli esperti.
+                </p>
+              </div>
+            </div>
+            <div id="goal-2-8" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                2.8 Collaborazioni, partnership, sponsorizzazioni
+              </p>
+              <div class="flex gap-3">
+                <p>2.8.1</p>
+                <p>
+                  Deve essere posta grande attenzione alla tutela dei minori in
+                  tutte le relazioni che vengono instaurate per l’organizzazione
+                  e lo svolgimento delle attività, siano esse con associazioni,
+                  agenzie o aziende. Negli accordi stipulati devono essere
+                  inclusi riferimenti specifici alla tutela dei minori e alla
+                  relativa policy.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>2.8.2</p>
+                <p>
+                  Qualora dovessero sorgere dei dubbi circa l’affidabilità di
+                  soggetti terzi coinvolti nell’attività per quanto riguarda la
+                  tutela dei minori, dovranno essere adottate tutte le misure
+                  necessarie ad accertare e risolvere eventuali problematiche
+                  anche di concerto con tali soggetti.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="goal-3" class="mt-5">
+            <p class="text-blue-300 underline">Goal 3</p>
+            <div id="goal-3-1" class="mt-2">
+              <p class="text-blue-300 mb-2">
+                3.1 Sensibilizzazione e formazione
+              </p>
+              <div class="flex gap-3">
+                <p>3.1.1</p>
+                <p>
+                  Tutti coloro i quali sono impegnati nelle attività SGS come
+                  operatori sportivi, siano essi collaboratori SGS o membri
+                  degli staff delle Società affiliate, nonché comunità,
+                  famiglie, bambini eragazzi devono essere informati circa i
+                  contenuti della policy e messi nelle condizioni di riconoscere
+                  e segnalare situazioni di violazione dei codici di condotta o
+                  di abuso.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.1.2</p>
+                <p>
+                  SGS realizzerà e renderà fruibili contenuti formativi dedicati
+                  alla tutela dei minori (sia online cheoffline) a sostegno
+                  degli operatori sportivi e delle Società affiliate.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.1.3</p>
+                <p>
+                  Particolare attenzione verrà riservata alle azioni da
+                  intraprendere per aumentare la consapevolezza dei bambini e
+                  dei ragazzi circa le tematiche trattate nella policy e sui
+                  modi in cui si può contribuire a rendere sicura la pratica
+                  sportiva e il gioco del calcio. A tal fine saranno predisposti
+                  materiali econtenuti fruibili dai minori con linguaggio e
+                  format specifici.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.1.4</p>
+                <p>
+                  A seconda del ruolo ricoperto e delle mansioni svolte
+                  nell’ambito delle attività SGS potranno essere forniti
+                  materiali e contenuti formativi ad hoc.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.1.5</p>
+                <p>
+                  SGS provvederà al continuo aggiornamento dei materiali e dei
+                  documenti disponibili per quantoriguarda la tutela dei minori
+                  attraverso modalità e strumenti differenti.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.1.6</p>
+                <p>
+                  Parallelamente all’impegno del Settore Giovanile e Scolastico
+                  nel fornire assistenza e formazione circa gli argomenti
+                  trattati nella policy, tutti gli adulti hanno il diritto e il
+                  dovere di richiedere chiarimenti, approfondimenti e consigli
+                  sugli argomenti trattati e sugli altri strumenti per la tutela
+                  dei minori. I delegati per la tutela dei minori sono il primo
+                  punto di contatto per tali richieste.È opportuno conservare
+                  una registrazione di tutti i webinar e di tutti gli interventi
+                  formativi, ivi inclusa la relativa programmazione in modo tale
+                  che tutti i contenuti siano sempre accessibili e fruibili dai
+                  soggetti autorizzati.
+                </p>
+              </div>
+            </div>
+            <div id="goal-3-2" class="mt-5">
+              <p class="text-blue-300 mb-2">3.2 Valutazione dei rischi</p>
+              <div class="flex gap-3">
+                <p>3.2.1</p>
+                <p>
+                  La valutazione dei rischi è uno strumento importante per
+                  qualsiasi processo di tutela dei minori. L’importanza di tale
+                  strumento risiede nella sua capacità di porre le basi per
+                  tutte le azioni preventive volte ad assicurare che le attività
+                  possano svolgersi in sicurezza, identificando e minimizzando,
+                  attraverso azioni mirate, i possibili rischi e le possibili
+                  problematiche circa la tutela dei minori.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.2.2</p>
+                <p>
+                  La responsabilità circa la valutazione dei rischi spetta al
+                  soggetto responsabile dell’organizzazione e dello svolgimento
+                  dell’attività. [Vedi Sezione Strumenti per il modello di
+                  valutazione dei rischi]
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.2.3</p>
+                <p>
+                  Qualora, a seguito della valutazione dei rischi, dovesse
+                  giungersi alla conclusione che non è possibile fornire
+                  sufficienti garanzie circa l’attività o l’evento e qualora
+                  risulti difficile porre in essere attività preventive
+                  adeguate, l’attività o l’evento dovrà essere rinviato,
+                  rimodulato o annullato.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.2.4</p>
+                <p>
+                  I contatti di emergenza e le schede mediche dei calciatori e
+                  delle calciatrici devono essere raccolti prima che questi
+                  prendano parte alle attività. Tali informazioni devono essere
+                  rese disponibili atutti coloro i quali sono incaricati della
+                  tutela dei minori in occasione di attività ed eventi
+                  qualoraqueste informazioni siano necessarie per la prevenzione
+                  dei rischi o per la gestione di eventualiemergenze o
+                  problematiche.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.2.5</p>
+                <p>
+                  Le misure predisposte per la gestione dei rischi devono essere
+                  costantemente aggiornate, siadurante che al termine delle
+                  attività o degli eventi in modo tale che azioni intraprese e
+                  soluzioniindividuate possano essere rese disponibili per
+                  attività o eventi futuri.
+                </p>
+              </div>
+            </div>
+            <div id="goal-3-3" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                3.3 Creare un canale sicuro per le segnalazioni
+              </p>
+              <div class="flex gap-3">
+                <p>3.3.1</p>
+                <p>
+                  È necessario stabilire e comunicare una procedura chiara ed
+                  accessibile per le segnalazioni di situazioni di violazione
+                  dei codici di condotta o di pericolo o abuso da parte di tutti
+                  i soggetti coinvolti siano essi vittime, testimoni o soggetti
+                  venuti a conoscenza dei fatti.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.2</p>
+                <p>
+                  Uno schema che illustri l’iter di gestione delle segnalazioni
+                  deve essere noto a tutti i soggetti interessati. Il punto di
+                  riferimento per tutti i processi è sempre individuato nella
+                  figura del delegato per la tutela dei minori sia esso locale o
+                  nazionale [Vedi Sezione Strumenti].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.3</p>
+                <p>
+                  Lo schema che illustra l’iter di gestione, con le relative
+                  procedure e i soggetti incaricati dovrà essere discusso con
+                  eventuali soggetti terzi (istituzioni, associazioni ecc.) per
+                  le quali possa configurarsi una possibile implicazione nella
+                  gestione delle segnalazioni (es. forze dell’ordine) [vedi
+                  anche obiettivo 4].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.4</p>
+                <p>
+                  La piattaforma realizzata da FIGC consentirà di effettuare
+                  delle segnalazioni circa violazioni deicodici di condotta,
+                  maltrattamenti o abusi, anche in forma anonima. Le
+                  segnalazioni potrannoessere effettuate direttamente a SGS.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.5</p>
+                <p>
+                  SGS garantisce la totale riservatezza del processo e dei
+                  documenti ai quali dovesse avere accesso nel corso
+                  dell’espletamento delle procedure richieste.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.6</p>
+                <p>
+                  Se i fatti portati a conoscenza attraverso le segnalazioni non
+                  vengono comprovati non è possibile intraprendere azioni
+                  sanzionatorie nei confronti del soggetto che ha effettuato la
+                  segnalazionerivelatasi infondata a meno non si configuri un
+                  comportamento in altro modo dannoso da parte di tale soggetto.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.7</p>
+                <p>
+                  Tutti i documenti o gli atti acquisiti a seguito o
+                  contestualmente alla segnalazione devono essereconservati
+                  secondo la vigente normativa in materia e trattati con la
+                  massima discrezione da parte dei delegati incaricati. [Vedi
+                  Sezione Strumenti]
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>3.3.8</p>
+                <p>
+                  Tutte le segnalazioni devono essere prese in carico. È altresì
+                  necessario fornire adeguata a risposta a tutti gli esposti
+                  secondo quanto stabilito nella policy [cfr. anche obiettivo
+                  4].
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="goal-4" class="mt-5">
+            <p class="text-blue-300 underline">Goal 4</p>
+            <div id="goal-4-1" class="mt-2">
+              <p class="text-blue-300 mb-2">
+                4.1 Creazione di link con altri soggetti coinvolti nella tutela
+                dei minori
+              </p>
+              <div class="flex gap-3">
+                <p>4.1.1</p>
+                <p>
+                  È necessario intraprendere dei proficui rapporti di
+                  collaborazione con le forze dell’ordine, le agenzie e le
+                  associazioni che si occupano di tutela dei minori al fine di
+                  facilitare eventuali rinvii di casi dubbi e per poter
+                  beneficiare di consulenza e supporto laddove tali interventi
+                  si rendessero necessari.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>4.1.2</p>
+                <p>
+                  I contatti locali dovrebbero essere preventivamente
+                  individuati al fine di facilitare le procedure di rinvio di
+                  eventuali casi che necessitino di una gestione da parte di
+                  autorità/agenzie.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>4.1.3</p>
+                <p>
+                  I delegati per la tutela dei minori sono tenuti a proseguire
+                  la loro formazione partecipando adincontri o corsi impartiti
+                  da altri enti, associazioni, agenzie, organizzazioni al fine
+                  di approfondire leconoscenze in materia.
+                </p>
+              </div>
+            </div>
+            <div id="goal-4-2" class="mt-5">
+              <p class="text-blue-300 mb-2">
+                4.2 Segnalazioni e misure di follow-up
+              </p>
+              <div class="flex gap-3">
+                <p>4.2.1</p>
+                <p>
+                  Tutte le segnalazioni, le indagini e la gestione delle
+                  problematiche relative alla tutela dei minoridevono rispettare
+                  le norme adottate da SGS nonché la vigente normativa in
+                  materia. Qualora venga presa in considerazione la possibilità
+                  di indirizzare il minore verso un soggetto esterno al fine
+                  diottenere tutela e protezione, il quadro normativo e i
+                  prioritari interessi del minore devono sempre essere presi in
+                  considerazione.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>4.2.2</p>
+                <p>
+                  Pertanto, possono essere coinvolte nell’iter di segnalazione e
+                  di supporto al minore soggetti quali medici o psicologi il cui
+                  intervento deve essere comunque registrato.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>4.2.3</p>
+                <p>
+                  I rinvii alle autorità locali per la protezione dei minori e
+                  alle forze dell’ordine devono essere presentati secondo le
+                  modalità e nelle forme previste dalla normativa vigente.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="goal-5" class="mt-5">
+            <p class="text-blue-300 underline">Goal 5</p>
+            <div id="goal-5-1" class="mt-2">
+              <div class="flex gap-3">
+                <p>5.1</p>
+                <p>
+                  La responsabilità ultima per l’attuazione della policy e dei
+                  codici di condotta resta in capo a FIGC-SGS.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>5.2</p>
+                <p>
+                  Almeno una volta all’anno FIGC effettuerà una valutazione
+                  della policy e dei codici di condotta e della relativa
+                  attuazione sul territorio [per il modello VEDI Sezione
+                  Strumenti].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>5.3</p>
+                <p>
+                  Sulla base di tale valutazione, dovrebbe essere sviluppato un
+                  piano d’azione annuale per colmareeventuali lacune
+                  nell’attuazione della policy, ridurre i rischi e risolvere le
+                  problematiche riscontrate[per il modello VEDI Sezione
+                  Strumenti].
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>5.4</p>
+                <p>
+                  Almeno ogni tre anni, SGS richiederà ai Coordinamenti
+                  Regionali SGS una valutazione della situazione delle Società
+                  affiliate del territorio di riferimento al fine di redigere un
+                  documento unitario a livellonazionale.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>5.5</p>
+                <p>
+                  La presente policy per la tutela dei minori è un documento
+                  “vivo” e sarà riesaminato ed eventualmente aggiornato
+                  periodicamente.
+                </p>
+              </div>
+              <div class="flex gap-3">
+                <p>5.6</p>
+                <p>
+                  Periodicamente SGS può chiedere una valutazione esterna circa
+                  l’attuazione della policy e delle relative procedure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="font-bold text-blue-600 mt-5">DISPOSIZIONI FINALI</p>
+          <p class="mt-3">
+            Questa policy viene adottata da FIGC-SGS in data 24/10/2020 ed entra
+            in vigore lo stesso giorno. SGS potrà adottare linee guida o altri
+            documenti ritenuti necessari per l’attuazione della presente policy.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="sixth-page" class="page">
+      <p class="text-xl font-bold text-center">
+        CODICE DI CONDOTTA PER ALLENATORI, DIRIGENTI E MEMBRI DELLO STAFF
+      </p>
+      <p class="mt-5">
+        A tutte le attività che coinvolgano minori verranno applicati dei chiari
+        Codici di Condotta che indichino i comportamenti da tenere e le
+        procedure da seguire per la tutela dei minori in tutte le situazioni e
+        gli ambiti afferenti al gioco del calcio e alla pratica sportiva da
+        parte di bambini e ragazzi. I codici di condotta sono uno strumento
+        importante in quanto riflettono i valori di civiltà, lealtà,
+        correttezza, probità, rispetto e spirito sportivo e definiscono i
+        comportamenti da tenere in base al ruolo di ciascun soggetto impegnato
+        nelle attività, rilevanti non solo dal punto di vista etico ma anche
+        legale.<br />
+        I codici di condotta sono per questo molto più di un elenco di ciò che
+        si deve o non si deve fare: rappresentano un’assunzione di
+        responsabilità che sancisce l’impegno nella tutela dei minori e nella
+        creazione di un ambiente sicuro per la pratica sportiva. Con la
+        sottoscrizione del Codice si fanno propri i principi e i valori
+        dell’organizzazione/della società facendosene ambasciatore e
+        promotore.<br />
+        I Codici di Condotta che trovate in questa sezione sono un insieme di
+        valori, obiettivi, comportamenti e impegni che ciascun collaboratore o
+        membro dello staff dovrebbe far propri. Nulla vieta che possano essere
+        adottati Codici di condotta che, partendo da quanto stabilito nei
+        documenti ufficiali SGS, possano adattarsi ai diversi contesti e
+        prevedere delle specifiche disposizioni che non contrastino con i valori
+        SGS.
+      </p>
+      <p class="mt-7">
+        I destinatari delle presenti Norme di Comportamento sono gli allenatori,
+        i dirigenti, i membri dello Staff a qualsiasi titolo, livello e
+        qualifica. I soggetti sopra indicati sono responsabili della crescita
+        dei giovani calciatori e delle giovani calciatrici nonché della
+        creazione di un ambiente positivo, sicuro e stimolante per la pratica
+        sportiva. A tal fine, sono chiamati a dare il buon esempio e ad essere
+        un modello per gli atleti a voi loro affidati. Tutti i soggetti sopra
+        indicati, che hanno un contatto diretto con gli atleti minori, sono
+        obbligati a rispettare il Codice di condotta, che accettano
+        integralmente dopo aver preso visione.<br />
+        Ogni presunta violazione del Codice di condotta deve essere segnalata e
+        verificata secondo quanto stabilito dalla Policy per la tutela dei
+        minori. Le misure e le sanzioni poste in essere potranno andare
+        dall’ammonimento verbale fino alla sospensione e alla cessazione della
+        collaborazione che potrebbero sommarsi a momenti di formazione e
+        sensibilizzazione aggiuntivi.<br />
+      </p>
+      <p>
+        Tutti i soggetti destinatari del presente Codice di condotta si
+        impegnano a:
+      </p>
+      <ul class="list-disc">
+        <li>
+          Rispettare e tutelare i diritti, la dignità e il valore di tutte le
+          calciatrici e di tutti i calciatori coinvolti, indipendentemente dalla
+          loro età, razza, colore della pelle, origine etnica, nazionale o
+          Sociale, sesso, disabilità, lingua, religione, opinione politica,
+          stato sociale, orientamento sessuale o qualsiasi altra ragione.
+          All’allenatore si richiede un comportamento civile e
+          antidiscriminatorio teso a non ignorare, facilitare o anche
+          collaborare tacitamente in attività che implicano un’ingiusta
+          discriminazione nei confronti degli atleti;
+        </li>
+        <li>Attenersi alle regole in tutte le fasi delle attività;</li>
+        <li>
+          Incoraggiare e promuovere il fair play, la disciplina, la correttezza,
+          il rispetto degli avversari e lo spirito di squadra dentro e fuori dal
+          campo;
+        </li>
+        <li>
+          Non assumere o tollerare comportamenti o linguaggi offensivi nei
+          confronti dei calciatori, calciatrici, genitori, direttori di gara,
+          membri dello staff o qualsiasi altro soggetto coinvolto nelle
+          attività; non tollerare o partecipare a comportamenti dei minori che
+          siano illegali, o abusivi o che mettano a rischio la loro sicurezza;
+        </li>
+        <li>
+          Sostenere e applaudire sempre gli sforzi dei giovani calciatori e
+          delle giovani calciatrici e valorizzarli a prescindere dai risultati
+          sul campo, promuovendo la cultura del lavoro e del divertimento;
+        </li>
+        <li>Trasmettere serenità, entusiasmo e passione;</li>
+        <li>Educare al rispetto, all’impegno e alla collaborazione;</li>
+        <li>
+          Aggiornarsi costantemente sulle conoscenze necessarie per adempiere al
+          meglio alle mansioni assegnate e sul tema della tutela dei minori
+        </li>
+        <li>
+          Rispettare la Policy di tutela dei minori, considerare il benessere,
+          la sicurezza e il divertimento di tutti i calciatori e di tutte le
+          calciatrici al di sopra ogni altra cosa;
+        </li>
+        <li>
+          Combattere e prevenire qualsiasi forma di bullismo tra i minori;
+        </li>
+        <li>
+          Ascoltare i bisogni, le richieste, le preoccupazioni di tutti i
+          calciatori e di tutte le calciatrici;
+        </li>
+        <li>
+          Non umiliare o sminuire gli atleti o i loro sforzi durante una partita
+          o una sessione di allenamento; agire in modo da far vergognare,
+          umiliare, sminuire o disprezzare un minore, o perpetrare qualsiasi
+          altra forma di abuso emotivo;
+        </li>
+        <li>
+          Non sfruttare un minore per un tornaconto personale o economico;
+        </li>
+        <li>
+          Non avere atteggiamenti nei confronti dei minori che - anche sotto il
+          profilo psicologico - possano influire negativamente sul loro sviluppo
+          armonico e socio-relazionale;
+        </li>
+        <li>
+          Non impegnarsi in attività sessuali o avere un rapporto sessuale con
+          calciatrici o calciatori di età inferiore ai 18 anni e non fare
+          commenti sessualmente allusivi mostrando un comportamento sempre
+          rispettoso e discreto.
+        </li>
+        <li>
+          Non avere relazioni con minori che possono essere in qualche modo
+          considerate di sfruttamento, maltrattamento o abuso;
+        </li>
+        <li>
+          Non consentire giochi, frasi, atteggiamenti, sessualmente provocatori
+          o inappropriati;
+        </li>
+        <li>
+          Garantire che tutte le attività siano adatte alle capacità, all’età
+          alla maturità fisica ed emotiva, all’esperienza e all’abilità dei
+          calciatori e delle calciatrici;
+        </li>
+        <li>
+          Lavorare insieme agli altri componenti dello Staff per tutelare e
+          promuovere gli interessi e il benessere di ogni giocatore e di ogni
+          giocatrice;
+        </li>
+        <li>
+          Non compiere mai abusi fisici e non infliggere punizioni o castighi
+          che possano essere ricondotti ad un abuso fisico;
+        </li>
+        <li>
+          Intessere relazioni proficue con i genitori dei calciatori e delle
+          calciatrici al fine di fare squadra per la crescita e la tutela dei
+          giovani atleti;
+        </li>
+        <li>
+          Accertarsi sempre che i minori siano adeguatamente sorvegliati e che
+          le partite e le attività in trasferta siano sicure;
+        </li>
+        <li>
+          Garantire che la salute, la sicurezza e il benessere degli atleti
+          costituiscano obiettivo primario rispetto al successo sportivo o
+          qualsiasi altra considerazione;
+        </li>
+        <li>
+          Organizzare il lavoro, le partite, il luogo di lavoro e le attività in
+          trasferta in modo tale da minimizzare i rischi;
+        </li>
+        <li>
+          Rispettare la privacy dei minori, specie in luoghi particolarmente
+          sensibili i quali devono essere sorvegliati, in modo tale da garantire
+          la privacy dei minori;
+        </li>
+        <li>
+          Evitare di fare per i minori attività di carattere personale che essi
+          stessi possono fare da soli;
+        </li>
+        <li>
+          garantire che qualsiasi trattamento di assistenza sanitaria (ad es.
+          visita medica, assistenza post infortunio, trattamento fisioterapico),
+          si svolga in modo aperto e in ambiente supervisionato, piuttosto che
+          al chiuso o in privato e sempre con la presenza di un soggetto terzo
+          (altro giocatore/giocatrice, adulto);
+        </li>
+        <li>
+          Evitare di passare del tempo da soli con i minori lontano da altri
+          soggetti;
+        </li>
+        <li>
+          Non lasciare che i minori rimangano senza adeguata supervisione nel
+          corso delle attività e, al termine delle stesse, accertarsi che
+          lascino l’impianto sportivo accompagnati da un proprio genitore o da
+          una persona autorizzata, qualora i minori non siano stati
+          preventivamente autorizzati a lasciare l’impianto autonomamente e
+          senza la presenza di un adulto. Ogni autorizzazione deve essere
+          debitamente sottoscritta dai soggetti esercenti la responsabilità
+          genitoriale sull’atleta minore;
+        </li>
+        <li>
+          Non utilizzare i social media in maniera inappropriata, non
+          coinvolgere i minori nelle conversazioni private sui social media e
+          non pubblicare mai commenti o condividere immagini che potrebbero
+          compromettere il loro benessere o causare loro danni;
+        </li>
+        <li>
+          Non acquisire, detenere e pubblicare fotografie o divulgare altre
+          informazioni sui bambini e sui ragazzi o sulle loro famiglie su
+          qualsiasi supporto cartaceo ovvero digitale (es. social media
+          personali o del club/organizzazione, siti web, strumenti di
+          comunicazione online personali, ecc.) in assenza della relativa
+          liberatoria sottoscritta dai genitori o dai tutori al fine di poter
+          conservare e/o utilizzare tale materiale prodotto;
+        </li>
+        <li>
+          Segnalare eventuali dubbi sulla sicurezza e sul benessere dei
+          calciatori e delle calciatrici rivolgendosi al delegato alla tutela
+          dei minori, in conformità a quanto disposto nella Policy per la tutela
+          dei minori.
+        </li>
+      </ul>
+      <p class="text-xl font-bold text-center mt-9 mb-5">
+        REGOLE PER TRASFERTE, SPOSTAMENTI E LOGISTICA TUTELA MINORI
+      </p>
+      <p>
+        Viaggiare per disputare partite e tornei o per prendere parte ad altre
+        attività o eventi deve essere sicuro e divertente per tutti i calciatori
+        e per tutte le calciatrici.
+      </p>
+      <p>
+        Accettando di prendere parte all’evento/all’attività è importante
+        comprendere e concordare che:
+      </p>
+      <ul class="list-disc">
+        <li>
+          Gli adulti accompagnatori sono responsabili della sicurezza e del
+          benessere dei calciatori e delle calciatrici, dal momento che vengono
+          affidati loro dai genitori fino al ritorno a casa in quanto i genitori
+          affidano loro la custodia dei figli, dal momento in cui li
+          accompagnano al punto di incontro concordato per la partenza e fino a
+          quando non fanno rientro a casa;
+        </li>
+        <li>
+          Gli atleti devono sempre seguire le diligentemente attenersi alle
+          istruzioni ed alle regole impartite loro dagli adulti accompagnatori e
+          i consigli degli adulti accompagnatori, nonché seguire i consigli
+          dispensati da questi ultimi;
+        </li>
+        <li>
+          Se, per qualche motivo, non si vuole seguire la squadra o il gruppo,
+          deve essere richiesta l’autorizzazione all'accompagnatore I calciatori
+          o le calciatrici non devono allontanarsi per nessun motivo dalla
+          squadra o dal gruppo senza esplicita autorizzazione degli
+          accompagnatori e/o responsabili di ogni viaggio e, nel caso in cui non
+          si voglia seguire la squadra o il gruppo, deve essere riferito il
+          luogo dove si permarrà per il periodo di tempo concordato;
+        </li>
+        <li>
+          Nello svolgimento di tutte le attività, gli atleti e gli operatori
+          sportivi sono tenuti a rispettare con diligenza le leggi ed i
+          regolamenti, nonché il Codice Etico, le Norme di comportamento e le
+          disposizioni interne;
+        </li>
+        <li>
+          In caso di pernotto, non deve mai essere prevista la possibilità che a
+          un minore venga assegnata una camera in condivisione con un operatore
+          sportivo (salve particolari e comprovate esigenze e nulla osta da
+          parte di genitori o tutori) a meno che non vi sia un legame di
+          parentela tra il minore e l’adulto. Devono essere comunicati in
+          anticipo tutti i dettagli sulla struttura individuata e devono essere
+          fornite informazioni sulla modalità di composizione delle stanze e
+          sulla relativa rooming list che potrà essere modificata dev’essere
+          fornita, in anticipo ed in maniera dettagliata, ai minori di età
+          superiore a 14 anni e comunque ai genitori, tutori o legali
+          rappresentanti, qualsiasi informazione riguardante la struttura
+          individuata e la modalità di composizione delle stanze, nonché la
+          relativa rooming list che potrà subire eventuali variazioni, sempre
+          nel rispetto dei criteri summenzionati e soltanto con il consenso
+          degli organizzatori/responsabili;
+        </li>
+        <li>
+          È richiesta la massima puntualità per tutti gli incontri e le
+          attività;
+        </li>
+        <li>
+          I genitori devono ricevere un programma dettagliato e tutte le
+          informazioni necessarie circa l’organizzazione dell’attività/evento.
+          La Federazione si impegna a fornire tempestivamente ai genitori degli
+          atleti un programma dettagliato e tutte le informazioni complete e
+          corrette che siano necessarie per l’organizzazione
+          dell’attività/evento;
+        </li>
+        <li>
+          Dopo il rientro in albergo, gli atleti devono evitare di spostarsi
+          dalla camera assegnata o di turbare in qualunque modo il diritto alla
+          quiete e agli altri ospiti;
+        </li>
+        <li>
+          Bisogna assumere, nei confronti dei vari prestatori di servizi
+          (personale di gara, degli impianti sportivi, degli alberghi, autisti,
+          guide, ecc.), un comportamento corretto e rispettoso dell’altrui
+          lavoro, nonché evitare comportamenti chiassosi od esibizionistici;
+        </li>
+        <li>
+          Qualora fosse un soggetto diverso dal genitore del calciatore/della
+          calciatrice ad accompagnare/riprendere il minore presso il punto di
+          incontro concordato per la partenza/per lo svolgimento dell’attività è
+          necessaria una delega sottoscritta dai genitori tramite la quale sia
+          possibile identificare il soggetto incaricato
+        </li>
+      </ul>
+
+      <div class="mt-9">
+        <p>NOME E COGNOME: {{orgPerson.name}} {{orgPerson.surname}}</p>
+        <p>LOUGO E DATA: {{club.town}}, {{today}}</p>
+        <p class="mt-8">
+          FIRMA: ____________________________________________________
+        </p>
+      </div>
+    </div>
+
+    <div id="seventh-page" class="page">
+      <p class="text-2xl font-semibold text-center mb-8">
+        DICHIARAZIONE SOSTITUTIVA DEL CERTIFICATO DEL CASELLARIO GIUDIZIALE E
+        DEI CARICHI PENDENTI
+      </p>
+      <p>
+        Il sottoscritto {{orgPerson.surname}} {{orgPerson.name}} nato a {{
+        orgPerson.personMetadata.birthplace}} il {{
+        orgPerson.personMetadata.birthdate}} residente nel comune {{
+        orgPerson.personMetadata.address.town}} provincia {{
+        orgPerson.personMetadata.address.province}} Stato {{
+        orgPerson.personMetadata.address.country}} {{
+        orgPerson.personMetadata.address.address}} Codice fiscale {{
+        orgPerson.fiscalCode}}
+      </p>
+      <p>
+        consapevole del fatto che, in caso di mendace dichiarazione verranno
+        applicate nei suoi riguardi, ai sensi dell'articolo 76 del DPR n. 445
+        del 28.12.2000, le sanzioni previste dal codice penale e dalle leggi
+        speciali in materia di falsità negli atti, oltre alle conseguenze
+        amministrative previste per le procedure relative agli appalti di
+        servizi,
+      </p>
+      <p class="text-center text-xl font-semibold mt-7">DICHIARA</p>
+      <ul class="list-disc mt-3">
+        <li>
+          che dal certificato generale del casellario giudiziale della Procura
+          della Repubblica presso il Tribunale di
+          _________________________________ risulta a proprio carico:<br />
+          <ul class="list-disc ml-5">
+            <li class="mt-4">
+              <div class="flex gap-2 align-baseline">
+                <p>Nulla</p>
+                <div class="border-2 w-5 h-5"></div>
+              </div>
+            </li>
+            <li class="mt-4">
+              oppure:
+              ___________________________________________________________________
+            </li>
+          </ul>
+        </li>
+        <li class="mt-6">
+          che dal certificato dei carichi pendenti presso la Procura della
+          Repubblica presso il Tribunale di _________________________________
+          risulta a proprio carico:<br />
+          <ul class="list-disc ml-5">
+            <li class="mt-4">
+              <div class="flex gap-2 align-baseline">
+                <p>Nulla</p>
+                <div class="border-2 w-5 h-5"></div>
+              </div>
+            </li>
+            <li class="mt-4">
+              oppure:
+              ___________________________________________________________________
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="text-xl text-center font-semibold mt-7">AUTORIZZA</p>
+      <p class="mt-3">
+        la richiesta del certificato penale del casellario giudiziario da parte
+        della FIGC (ART. 25 BIS DPR 313/2002 14/11/2002).
+      </p>
+      <p class="mt-3 font-semibold mb-4">Inoltre:</p>
+      <p>
+        <strong>a)</strong> che non è mai stata pronunciata, nei confronti del
+        sottoscritto, sentenza di condanna passata in giudicato, ovvero di
+        sentenze di applicazione della pena su richiesta ai sensi dell'art. 444
+        del codice di procedura penale per qualsiasi reato che incida sulla
+        affidabilità morale e professionale;
+      </p>
+      <p>
+        <strong>b)</strong> che nei confronti del sottoscritto non è pendente
+        procedimento per l'applicazione di una delle misure di prevenzione di
+        cui all'art. 3 della Legge 27.12.1956, n. 1423.
+      </p>
+
+      <p class="mt-7">Il dichiarante</p>
+      <p class="mt-9">
+        ______________________________________________________________
+      </p>
+      <p class="text-right mt-7">
+        Allegati: copia di un documento d’identità, in corso di validità.
+      </p>
+      <footer class="mt-24">
+        <p>
+          {{club.name}} - {{club.address}} {{club.cap}} {{club.town}}
+          {{(club.province)}}
+        </p>
+        <p>Cell: {{club.tel1}} Email scuola calcio: {{club.email2}}</p>
+        <p>Email: {{club.email1}} Sito web: {{club.linkWeb}}</p>
+      </footer>
+    </div>
+  </body>
+</html>
